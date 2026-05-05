@@ -25,9 +25,9 @@ jobs:
 
       - name: Build Jupyter Book # Change this to new repo name
         run: |
-          cd DAwAI_SA
+          cd DAwAISA
           jupyter-book build .
 
       - name: Deploy to GitHub Pages # Change this to new repo name
         run: |
-          ghp-import -n -p -f DAwAI_SA/_build/html
+          ghp-import -n -p -f DAwAISA/_build/html
