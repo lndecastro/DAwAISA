@@ -1,0 +1,20 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro.md
+chapters:
+  - file: Module1_Introduction_to_AEDA.md
+    title: "Module 1: Introduction to AEDA"
+  - file: Module2_DataDescription.md
+    title: "Module 2: Data Description and Preparation"
+  - file: Module3_Descriptive_Analysis.md
+    title: "Module 3: Descriptive Analysis"
+  - file: Module4_Principles_of_Visualization.md
+    title: "Module 4: Principles of Visualization"
+  - file: Module5_Visualization_Methods.md
+    title: "Module 5: Data Visualization Methods"
+  - file: Module6_Special_Types_of_Data.md
+    title: "Module 6: Special Types of Data"
+  - file: Module7_Storytelling_Dashboards.md
+    title: "Module 7: Data Storytelling and Dashboard Design"
