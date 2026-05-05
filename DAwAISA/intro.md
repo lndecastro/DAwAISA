@@ -1,26 +1,26 @@
-# Welcome to Advanced Exploratory Data Analysis (AEDA)
+# Welcome to Data Analysis with AI (DAwAI)
 
-This program is designed to develop the analytical mindset, technical foundation, and communication skills required to transform raw data into meaningful insights that support understanding, monitoring, and decision-making.
+Welcome to the **Data Analysis with AI Program (DAwAI)**, part of the **FGCU AI Academy** led by the **Dendritic Institute for Human-Centered AI & Data Science** at Florida Gulf Coast University. 
 
-Exploratory Data Analysis is not a preliminary or auxiliary activity. It is a **core analytical discipline** that determines how data is understood, how questions are framed, how results are interpreted, and how insights are communicated. Poor exploratory analysis leads to fragile conclusions, misleading visualizations, ineffective dashboards and inferences, regardless of how advanced the downstream tools may be.
+The **DAwAI Program** is an _applied, technical offering_ of the **FGCU AI Academy**, designed to develop the analytical mindset, technical foundation, and communication skills required to transform raw data into meaningful insights. As a core program in the Academy series, it helps students, professionals, and practitioners understand how data is explored, how questions are framed, and how results are interpreted and communicated to support decision-making. Through hands-on analysis and human-centered reasoning, participants learn that Exploratory Data Analysis is not a preliminary or auxiliary activity, it is a **core analytical discipline** that determines the quality of every downstream conclusion, visualization, and inference, regardless of how advanced the tools may be. This sets the stage for deeper applied and AI-driven data work in subsequent Academy pathways. 
 
-This course emphasizes **thinking with data**, not merely processing it.
+This Jupyter Book is designed to be your **interactive guide** through the world of data analysis, from its foundational principles and exploratory methods to AI-assisted analysis and insight communication, always emphasizing **thinking with data**, not merely processing it.
 
-## What This Program Is About
+## Program Goals
 
-Advanced Exploratory Data Analysis focuses on:
+The goal of this program is to equip learners with enough understanding to confidently perform exploratory data analysis, data storytelling, and dashboard design. By the end of this journey you will:
 
-- Understanding the structure, behavior, and limitations of data
-- Summarizing data through descriptive measures
-- Revealing patterns, relationships, and anomalies
-- Designing effective visual representations
-- Communicating insights through storytelling and dashboards
+- Understand the structure, behavior, and limitations of data
+- Summarize data through descriptive measures
+- Reveal patterns, relationships, and anomalies
+- Design effective visual representations
+- Communicate insights through storytelling and dashboards
 
 Rather than emphasizing predictive modeling or inference, AEDA concentrates on **descriptive reasoning, visual cognition, and analytical judgment**, the foundations upon which reliable analytics and decision support systems are built.
 
 This program prepares students to work confidently with unfamiliar datasets, ask the right analytical questions, and produce insights that are both technically sound and communicable to diverse audiences.
 
-## Professional Orientation: BI and Data Analyst Careers (Learning Objectives)
+## Learning Objectives
 
 This program is explicitly designed to support **Business Intelligence (BI) Analysts and Data Analysts**, providing the conceptual foundation and practical tools required for these roles.
 
@@ -75,7 +75,7 @@ However, Generative AI does not replace:
 - Domain understanding
 - Human judgment
 
-In this course, AI is treated as a **supporting instrument**, not an authority. Analytical responsibility always remains with the analyst.
+In this course, AI is treated as a **supporting tool**, not an authority. Analytical responsibility always remains with the analyst.
 
 ## How to Use This Book
 
