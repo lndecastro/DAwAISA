@@ -26,7 +26,7 @@ jobs:
       - name: Build Jupyter Book # Change this to new repo name
         run: |
           cd DAwAISA
-          jupyter-book build .
+          jupyter-book build DAwAISA/.
 
       - name: Deploy to GitHub Pages # Change this to new repo name
         run: |
