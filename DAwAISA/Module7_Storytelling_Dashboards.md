@@ -462,6 +462,153 @@ The figure below shows the final dashboard built using PowerBI by Microsoft.
 ![Final Dashboard](./Data/Figure_7_6a_Dashboard.jpg) <p>
 **Figure:** Dashboad for the Superstore Sales dataset created with PowerBI by Microsoft.
 
+## 7.6 Prompting the Superstore Sales Interactive Dashboard
+
+Copy the prompt below in its entirety and paste it into your LLM interface (e.g., Claude, ChatGPT, or Gemini). The prompt is self-contained; it includes the dataset description, layout specification, color scheme, and interactivity requirements.
+
+The expected output is a **fully functional, single-file interactive dashboard** delivered as an HTML webpage or a React component that runs in the browser. All charts, filters, and interactions should work without any external dependencies beyond standard charting libraries.
+
+After receiving the output, test it in your browser and note any elements that differ from the wireframe or the design specifications. Bring your results to class for discussion.
+
+### Prompt 1: Minimal Instructions
+```
+> Build a fully interactive dashboard for the **Superstore Sales dataset**, a U.S. retail transactions dataset covering orders placed between 2015 and 2018.
+> You are free to decide what KPIs, charts, filters, layout, color scheme, and visual style best communicate the key insights from this dataset. Deliver the result as a single self-contained HTML file or an interactive artifact that runs in any modern browser without installation or external data files.
+```
+
+### Prompt 2: Pre-defining the Dashboard Components
+```
+> Build a fully interactive dashboard called **"Superstore Sales Dashboard"** using the Superstore Sales dataset — a U.S. retail transactions dataset covering orders placed between 2015 and 2018. The dashboard must include the following five elements, all of which update simultaneously when the user changes any filter:
+>
+> 1. **KPI Card** — total Sales value across the currently filtered data
+> 2. **Line Chart** — total Sales value aggregated by month
+> 3. **Line Chart** — number (count) of orders aggregated by month
+> 4. **Bar Chart** — total Sales broken down by Category and Sub-Category
+> 5. **Map** — number of orders per U.S. state, shown as proportional bubbles
+>
+> The dashboard must also include three interactive filters that control all five elements simultaneously:
+>
+> - **Year** filter (2015, 2016, 2017, 2018)
+> - **Ship Mode** filter (First Class, Same Day, Second Class, Standard Class)
+> - **Segment** filter (Consumer, Corporate, Home Office)
+>
+> You are free to choose the layout, color scheme, chart library, and visual style. Deliver the result as a single self-contained HTML file that runs in any modern browser without installation or external data files.
+```
+
+### Prompt 3: Full Specification
+```
+> Build a fully interactive, single-file HTML dashboard called **"Superstore Sales Dashboard"** that replicates the layout and functionality described below. The dashboard is based on the Superstore Sales dataset, a retail transactions dataset covering orders placed in the United States between 2015 and 2018. Since no data file is being provided, generate realistic synthetic data that faithfully reflects the known characteristics of this dataset as described in the data section below.
+>
+> ### 1. Dashboard Layout
+>
+> Implement the following grid layout precisely. The dashboard has a **full-width header banner** at the top, followed by a **three-column body** divided into two rows.
+>
+> ┌─────────────────────────────────────────────────────────────────┐
+> │                  SUPERSTORE SALES DASHBOARD                     │  ← Full-width header banner (dark green background, white title text)
+> ├──────────────┬──────────────────────────┬───────────────────────┤
+> │  KPI Card    │  Total Value of Sales    │  Number (Volume) of   │
+> │  (Total      │  by Month                │  Sales by Month       │
+> │  Sales $)    │  (Line Chart)            │  (Line Chart)         │
+> │              │                          │                       │
+> │  Year        │                          │                       │
+> │  (Slicer)    │                          │                       │
+> │              │                          │                       │
+> │  Ship Mode   ├──────────────────────────┼───────────────────────┤
+> │  (Slicer)    │  Sales by Category and   │  Number of Orders     │
+> │              │  Sub-Category            │  by State             │
+> │  Segment     │  (Grouped Bar Chart)     │  (Bubble Map of       │
+> │  (Slicer)    │                          │  the United States)   │
+> └──────────────┴──────────────────────────┴───────────────────────┘
+>
+> Column proportions: left panel = 15% width; center panel = 45% width; right panel = 40% width.  
+> Row proportions: top row = 45% height; bottom row = 55% height.  
+> The left panel spans both rows as a single vertical sidebar.
+>
+> ### 2. Individual Panel Specifications
+>
+> **Header Banner**
+> - Full-width bar across the top of the dashboard.
+> - Background: dark green (#2E7D32).
+> - Text: "Superstore Sales Dashboard" centered, white, large serif or clean sans-serif font.
+>
+> **Left Sidebar — KPI Card and Slicers**
+> - Background: light gray (#F5F5F5).
+> - **KPI Card** (top of sidebar): Display the total Sales value across all currently filtered data. Format as currency (e.g., $2.30M). Label it "Total Sales ($)". Use large bold green text for the value.
+> - **Year Slicer**: A labeled checkbox group listing 2015, 2016, 2017, 2018. All years selected by default.
+> - **Ship Mode Slicer**: A labeled checkbox group listing First Class, Same Day, Second Class, Standard Class. All selected by default.
+> - **Segment Slicer**: A labeled checkbox group listing Consumer, Corporate, Home Office. All selected by default.
+> - Each slicer group should have a bold label header (e.g., "Year", "Ship Mode", "Segment") with a visible separator line between groups.
+>
+> **Top-Center — Total Value of Sales by Month (Line Chart)**
+> - X-axis: Month name (January through December).
+> - Y-axis: Sum of Sales across all orders in that month, aggregated across all selected years. Label as "Sum of Sales ($)".
+> - One line in dark green (#388E3C).
+> - Include tooltips showing exact month and value on hover.
+> - Title: "Total Value of Sales by Month ($)".
+>
+> **Top-Right — Number (Volume) of Sales by Month (Line Chart)**
+> - X-axis: Month name (January through December).
+> - Y-axis: Count of order line items in that month, aggregated across all selected years. Label as "Count of Sales".
+> - One line in dark green (#388E3C).
+> - Include tooltips showing exact month and count on hover.
+> - Title: "Number (Volume) of Sales by Month".
+>
+> **Bottom-Center — Sales by Category and Sub-Category (Grouped Bar Chart)**
+> - X-axis: Sub-Category names, grouped and visually separated by their parent Category (Furniture | Office Supplies | Technology). Show Category labels below the sub-category labels on the X-axis.
+> - Y-axis: Sum of Sales. Label as "Sum of Sales ($)".
+> - Bars in dark green (#388E3C); use lighter green (#A5D6A7) for hover highlight.
+> - Include tooltips showing sub-category name and exact sales value on hover.
+> - Title: "Sales by Category and Sub-Category ($)".
+>
+> **Bottom-Right — Number of Orders by State (Bubble Map)**
+> - Display an SVG or canvas-based outline map of the contiguous United States.
+> - For each state, place a circle centered on the state's approximate geographic centroid.
+> - Circle size: proportional to the number of orders in that state under the current filter.
+> - Circle color: medium green (#66BB6A), with opacity 0.7.
+> - Include tooltips showing state name and order count on hover.
+> - Title: "Number of Orders by State".
+>
+> ### 3. Color Scheme
+>
+> | Element | Color |
+> |---|---|
+> | Header background | #2E7D32 (dark green) |
+> | Primary chart color | #388E3C (medium-dark green) |
+> | Chart hover highlight | #A5D6A7 (light green) |
+> | Map bubble fill | #66BB6A (medium green), opacity 0.7 |
+> | Sidebar background | #F5F5F5 (light gray) |
+> | Main background | #FFFFFF (white) |
+> | KPI value text | #1B5E20 (deep green) |
+> | Body text and labels | #212121 (near-black) |
+> | Panel borders | #E0E0E0 (light gray) |
+>
+> ### 4. Interactivity Requirements
+>
+> All five panels (KPI card, both line charts, bar chart, and map) must update simultaneously whenever the user changes any slicer selection. Specifically:
+>
+> - Checking or unchecking any Year value re-aggregates all data to include only the selected years.
+> - Checking or unchecking any Ship Mode value re-aggregates all data to include only the selected ship modes.
+> - Checking or unchecking any Segment value re-aggregates all data to include only the selected segments.
+> - The KPI card always reflects the total Sales of the currently filtered dataset.
+> - All charts re-render with updated values after each filter change.
+> - Every chart must include hover tooltips showing the exact aggregated value for the hovered element.
+>
+> ### 5. Technical Requirements
+>
+> - Deliver the dashboard as a **single self-contained HTML file**.
+> - Use **Chart.js** (loaded from CDN) for the line charts and bar chart.
+> - Use **plain SVG with JavaScript** for the U.S. bubble map (include approximate state centroid coordinates for all 48 contiguous states and D.C. hardcoded as a JavaScript array).
+> - Generate all synthetic data as a JavaScript array of objects hardcoded inside a `<script>` tag. Do not require any external data file or API call.
+> - Use only vanilla JavaScript for interactivity — no React, Vue, or other frameworks.
+> - The dashboard must render correctly in a modern browser (Chrome or Firefox) without any build step or local server.
+> - The page should have no scrollbar — the entire dashboard must fit within a single viewport at 1280×900 resolution.
+```
+
+> **Note:** LLMs may produce slightly different map implementations or chart libraries depending on the interface used. If the first output does not render correctly, use the following follow-up prompt:
+```
+The dashboard did not render correctly. Specifically, [describe the issue]. Please fix only that section and return the corrected complete HTML file.
+```
+
 ## Reflection
 
 * Who is the intended audience for your data story, and how does this influence visualization and narrative choices?
@@ -474,7 +621,7 @@ The figure below shows the final dashboard built using PowerBI by Microsoft.
 
 Students are encouraged to consult the bibliography listed in the course syllabus, particularly:
 
-* **De Castro, L. N. (2026).** *Exploratory Data Analysis: Descriptive Analysis, Visualization, and Dashboard Design*. CRC Press.
+* **de Castro, L. N. (2026).** *Exploratory Data Analysis: Descriptive Analysis, Visualization, and Dashboard Design*. CRC Press.
 * **Knaflic, C. N. (2015).** *Storytelling with Data: A Data Visualization Guide for Business Professionals*. Wiley.
 * **Ward, M., Grinstein, G. G., & Keim, D. (2015).** *Interactive Data Visualization*. CRC Press.
 * **Wilke, C. O. (2019).** *Fundamentals of Data Visualization*. O’Reilly Media.
