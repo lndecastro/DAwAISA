@@ -37,6 +37,13 @@ Another important aspect in EDA discussed here is that while summary measures ar
 
 To illustrate, consider the case of the Anscombe's Quartet presented in the code snippet and figure below. Despite some structural differences, all datasets have the same summary measures and regression lines.
 
+### Simple Prompt
+```
+Perform the descriptive and visual analysis of Anscombe’s Quartet dataset. Print the Anscombe's Quartet table with the summary measures (mean, std, corr, linear regression) for each dataset and plot the scatterplots of each of the four datasets.
+```
+
+### Python Code
+
 ```python
 # CODE 4.1
 # Print the Anscombe's Quartet table with the summary measures (mean, std, corr, linear 
@@ -169,7 +176,7 @@ Linear regression model: y = 3.00 + 0.50x <p>
 
 ![Anscombe's Quartet](./Data/Figure_4_1_Anscombe_Quartet.jpg)
 
-### Prompt — Anscombe's Quartet Table with Summary Measures
+### Reversed Prompt — Anscombe's Quartet Table with Summary Measures
 ```
 You are a data analysis assistant supporting an **Advanced Exploratory Data Analysis (AEDA)** course.
 
@@ -220,6 +227,8 @@ For each dataset, perform the following steps independently:
 ```
 
 An example similar to the **Anscombe’s Quartet** is the **Datasaurus Dozen**, a dataset consisting of 13 distinct datasets, each with a different shape, but with practically the same summary measures. The code snippet below is similar to the previous one, but reads the Datasaurus Dozen dataset from a CSV file with semicolon delimiter using the Pandas library. 
+
+### Python Code
 
 ```python
 # CODE 4.2
@@ -303,6 +312,13 @@ For example:
 Key variables should be mapped to preattentive attributes when rapid detection is desired.
 
 The code snippet below illustrate various preattentive features: Shape, line width, color, size, markings, orientation, position, 3d, length, curvature, density, closure, and texture.
+
+### Simple Prompt
+```
+Generate illustrations of the following preattemptive processing features: Shape, line width, color, size, markings, orientation, position, 3d, length, curvature, density, closure, and texture
+```
+
+### Python Code
 
 ```python
 # CODE SNIPPETS for Section 4.1.2
@@ -466,7 +482,7 @@ The figures below show the thirteen preattentive features discussed here followe
 ![Preattentive features](./Data/Figure_4_14_Closure.jpg)
 ![Preattentive features](./Data/Figure_4_15_PAF_Texture.jpg)
 
-### Prompt — Preattentive Processing Features
+### Reversed Prompt — Preattentive Processing Features
 ```
 You are a data analysis assistant supporting an **Advanced Exploratory Data Analysis (AEDA)** course.
 
@@ -563,9 +579,7 @@ The table below summarizes the Gestalt principles and how each one of them enabl
 | Figure–Ground | Objects are perceived as either being in the foreground or the background. |
 | Common Fate | Objects that move together or change in a similar way tend to be perceived as a group or a pattern. |
 
-#### Exercise 2: Generate Python scripts to illustrate each of the seven Gestalt principles reviewd.
-
-#### Exercise 3: For each Python script create a prompt to illustrate the same principle using a general-purpose LLM.
+#### Exercise 2: Generate prompts to illustrate each of the seven Gestalt principles reviewd.
 
 ## 4.2 Design Principles for Data Visualization
 
