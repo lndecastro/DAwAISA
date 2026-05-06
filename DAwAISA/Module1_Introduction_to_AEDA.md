@@ -35,7 +35,7 @@ The book reinforces that EDA becomes critical for making data suitable for model
 
 ![The Data Science Workflow](./Data/DSWorkflow.png)
 
-## 1.3 Careers in Data Science: roles & responsibilities (high-level)
+## 1.3 Careers in Data Science: Roles & Responsibilities (high-level)
 Examples of roles discussed include: **Business Analyst, Data Scientist, Data Analyst, Data Engineer**, and related leadership/architecture roles.   
 One useful framing is:  
 - Data Scientist: identifies suitable data, designs/applies algorithms, analyzes results, and bridges business ↔ analytics. 
@@ -446,7 +446,7 @@ This contrast captures the core value of context engineering: **the same model, 
 | **Google Gemini** | NotebookLM / AI Studio | Academic and research document analysis |
 | **Microsoft Copilot** | Copilot Pages | Integration with Excel, Word, and Teams workflows |
 
-### Exercise 5: Building an Analysis Workspace
+### Exercise 5: Building a Data Analysis Workspace
 
 Using any platform of your choice (Claude, ChatGPT, Perplexity, etc.):
 
