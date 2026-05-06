@@ -1,6 +1,6 @@
 # 5 — Data Visualization Methods
 
-This module presents the **main data visualization methods used in Advanced Exploratory Data Analysis (AEDA)**. While Module 4 focused on *principles* of visualization, this module focuses on *methods*: which visual representations to use depending on the analytical goal and the nature of the data.
+This module presents the **main data visualization methods used in Exploratory Data Analysis (EDA)**. While Module 4 focused on *principles* of visualization, this module focuses on *methods*: which visual representations to use depending on the analytical goal and the nature of the data.
 
 The methods are organized according to the analytical questions they help answer: **distributions, associations, amounts, proportions, evolution and flow, and geospatial data**.
 
@@ -12,7 +12,7 @@ By the end of this module, students will be able to:
 2. Interpret distributions, associations, and patterns using visual representations.  
 3. Compare variables using appropriate quantitative and categorical charts.  
 4. Analyze temporal evolution, flows, and spatial patterns visually.  
-5. Avoid common misuses of visualization methods in exploratory analysis.
+5. Avoid common misuses of visualization methods in exploratory data analysis.
 
 ## 5.1 Visualization Selection Guide
 
@@ -85,6 +85,11 @@ Values are often considered outliers if <p>
 $x < Q_1 - \gamma \cdot IQR \quad \text{or} \quad x > Q_3 + \gamma \cdot IQR$ <p>
 where $IQR = Q_3 - Q_1$ and typically $\gamma = 1.5$.
 
+#### Simple Prompt
+```
+Generate a synthetic dataset that follows a normal (Gaussian) distribution. Visually analyze the distribution using a histogram and a box-and-whisker plot.
+```
+
 #### Python Code — Boxplot and Histogram
 
 ```python
@@ -127,7 +132,7 @@ plt.show()
 
 ![Boxplot and Histogram](./Data/Figure_5_2.jpg)
 
-#### Prompt — Boxplot and Histogram
+#### Reversed Prompt — Boxplot and Histogram
 ```
 You are a data visualization assistant supporting an **Advanced Exploratory Data Analysis (AEDA)** course.
 
@@ -160,7 +165,6 @@ Produce a single figure with:
 The emphasis should be on **conceptual clarity and interpretability**, not on implementation details or low-level plotting mechanics.
 ```
 
-
 > **Note:** In this module we are going to use a different style of prompts when compared with the prompts developed in the previous module. This is to illustrate that although we keep the general structure of the prompt, it is possible to create them in different ways and obtain similar (equivalent) results.
 
 <!--
@@ -181,6 +185,11 @@ Continuous quantitative data.
 - Width represents data density  
 - Shape reveals multimodality and skewness  
 - Inner quartiles and median can be shown as in a boxplot
+
+#### Simple Prompt
+```
+For the variable Sepal length of the Iris dataset, plot the violin and the box-and-whisker plots side by side and compare their characteristics.
+```
 
 #### Python Code — Box and Violin plot (Iris dataset example)
 
@@ -227,7 +236,7 @@ plt.show()
 ![Box and Violin Plot](./Data/Figure_5_5_BoxPlot_ViolinPlot.jpg) <p>
 **Figure:** Boxplots (a) and violin plots (b) of the Iris dataset sepal length grouped by the plant species.
 
-#### Prompt — Box and Violin plot (Iris dataset example)
+#### Reversed Prompt — Box and Violin plot (Iris dataset example)
 
 ```
 You are a data visualization assistant supporting an **Advanced Exploratory Data Analysis (AEDA)** course.
@@ -277,6 +286,11 @@ Continuous variables on both axes.
 - Strength of association  
 - Clusters and outliers  
 
+#### Simple Prompt
+```
+Plot the scatterplot of variables Weight and MPG of the AutoMPG data set and draw the linear regression line between these two variables.
+```
+
 #### Python Code — Scatter plot with regression line (Auto MPG example)
 
 ```python
@@ -304,10 +318,10 @@ plt.show()
 
 ![Fig5_4 — Scatter Plot](./Data/Fig5_4.png)
 
-#### Python Code — Scatter plot with regression line (Auto MPG example)
+#### Reversed Python Code — Scatter plot with regression line (Auto MPG example)
 
 ```
-You are a data visualization assistant supporting an **Advanced Exploratory Data Analysis (AEDA)** course.
+You are a data visualization assistant supporting an **Exploratory Data Analysis (AEDA)** course.
 
 Your task is to **explore and communicate the association between two quantitative variables** using an appropriate visualization technique.
 
@@ -351,6 +365,11 @@ To visualize the relationship between **two quantitative variables**, while inco
 - How the third variable varies across the x–y space, as indicated by bubble size  
 - Group patterns or segmentation when color is used  
 - Presence of clusters, gaps, and outliers, including unusually large or small bubbles  
+
+#### Simple Prompt
+```
+Plot the following bubble charts: 1) HDI Index (x-axis), Life Expectancy (y-axis), continent (bubble color), and CO2 consumption (bubble size) for the Gapminder dataset; and 2) acceleration (x-axis), MPG (y-axis), cylinders (bubble color), and horsepower (bubble size) of the Auto MPG dataset. 
+```
 
 #### Python Code — Bubble chart (Gapminder dataset example)
 
@@ -396,10 +415,10 @@ plt.show()
 
 ![Fig5_5 — Bubble Chart](./Data/Figure_5_7_Bubble_Chart.jpg)
 
-#### Prompt — Bubble chart (Gapminder dataset example)
+#### Reversed Prompt — Bubble chart (Gapminder dataset example)
 
 ```
-You are a data visualization assistant supporting an **Advanced Exploratory Data Analysis (AEDA)** course.
+You are a data visualization assistant supporting an **Exploratory Data Analysis (EDA)** course.
 
 Your task is to **analyze multivariate relationships using bubble charts**, where multiple variables are encoded simultaneously in a single visualization.
 
@@ -435,8 +454,6 @@ The resulting visualizations should allow students to:
 The emphasis should be on **conceptual understanding of multivariate visualization and interpretability**, not on implementation details or low-level plotting mechanics.
 ```
 
----
-
 ### 5.2.3 Scatterplot Matrix (Pair Plot)
 
 **Purpose:**  
@@ -451,6 +468,11 @@ Multiple continuous quantitative variables (numeric features). Optionally, one c
 - Clusters and group separation when color encodes categories
 - Outliers and unusual observations that appear across multiple projections
 - Redundancy or collinearity between variables (highly similar patterns across plots)
+
+#### Simple Prompt
+```
+Plot the scatterplot matrix for the Iris dataset of Fisher.
+```
 
 #### Python Code — Pair plot (Iris example)
 
@@ -478,9 +500,9 @@ plt.show()
 ![Scatterplot Matrix](./Data/Figure_5_8a_Scatterplot_Matrix.jpg)
 ![Scatterplot Matrix](./Data/Figure_5_8b_Scatterplot_Matrix.jpg)
 
-#### Prompt — Pair plot (Iris example)
+#### Reversed Prompt — Pair plot (Iris example)
 ```
-You are a data visualization assistant supporting an **Advanced Exploratory Data Analysis (AEDA)** course.
+You are a data visualization assistant supporting an **Exploratory Data Analysis (EDA)** course.
 
 Your task is to **explore and communicate multivariate relationships using scatterplot matrices (pair plots)** for a well-known benchmark dataset.
 
@@ -523,6 +545,11 @@ A matrix of numerical values, typically derived from multiple quantitative varia
 - Redundancy / multicollinearity (strong correlations among predictors)
 - Weak or near-zero relationships that suggest independence
 - Potential anomalies or unusual patterns in structured data matrices
+
+#### Simple Prompt
+```
+Plot the correlation heatmaps for the Iris and Forest Fires datasets
+```
 
 #### Python Code — Correlation heatmap (Iris example)
 
@@ -573,9 +600,9 @@ plt.show()
 ![Heatmap / Correlogram](./Data/Figure_5_9a_Heatmap.jpg)
 ![Heatmap / Correlogram](./Data/Figure_5_9b_Heatmap.jpg)
 
-#### Prompt — Correlation heatmap (Iris example)
+#### Reversed Prompt — Correlation heatmap (Iris example)
 ```
-You are a data visualization assistant supporting an **Advanced Exploratory Data Analysis (AEDA)** course.
+You are a data visualization assistant supporting an **Exploratory Data Analysis (EDA)** course.
 
 Your task is to **analyze and compare correlation structures across multiple datasets** using heatmaps (correlograms).
 
@@ -623,6 +650,11 @@ To compare quantities (amounts) across **discrete categories**.
 - Magnitude differences between categories (gaps and rankings)  
 - Overall pattern of variation across categories (e.g., dominance, balance)  
 - Potential outliers or unusually large/small categories  
+
+#### Simple Prompt
+```
+Create the bar charts for variables Severity and Shape vs Severity of the mammographic dataset
+```
 
 #### Python Code — Bar chart 
 
@@ -674,9 +706,9 @@ plt.show()
 
 ![Fig5_8 — Bar Chart](./Data/Figure_5_10_Bar_Charts.jpg)
 
-#### Prompt — Bar chart 
+#### Reversed Prompt — Bar chart 
 ```
-You are a data visualization assistant supporting an **Advanced Exploratory Data Analysis (AEDA)** course.
+You are a data visualization assistant supporting an **Exploratory Data Analysis (EDA)** course.
 
 Your task is to **analyze and compare categorical amounts using bar charts** based on a real-world medical dataset containing diagnostic attributes.
 
@@ -726,6 +758,11 @@ To compare **multiple variables** (dimensions) for one or more entities using a 
 
 > Radar charts should be used with care. They can be useful for a quick “profile” view, but they are not ideal for precise comparisons.
 
+#### Simple Prompt
+```
+Plot the radar Chart for the Iris dataset set of Fisher.
+```
+
 #### Python Code — Radar chart 
 
 ```python
@@ -760,7 +797,7 @@ plt.show()
 
 ![Radar Chart](./Data/Figure_5_11_Radar_Chart.jpg)
 
-#### Prompt — Radar chart 
+#### Reversed Prompt — Radar chart 
 ```
 You are a data visualization assistant supporting an **Advanced Exploratory Data Analysis (AEDA)** course.
 
@@ -810,6 +847,12 @@ To show how a **whole** is divided into **parts**, where each slice represents a
 - Relative contribution of each category to the total (largest vs. smallest slices)  
 - Dominant categories and whether the distribution is balanced or concentrated  
 - Whether small categories are negligible or meaningful (if visible/labeled)  
+
+#### Simple Prompt
+```
+Plot the pie Chart and Grouped Bar Chart for variables 'Margin' of the Mammographic dataset, and 
+'Day' of the Forest Fires dataset - Use percentage values for the grouped bar chart
+```
 
 #### Python Code — Pie chart and Bar Chart
 
@@ -867,10 +910,10 @@ plt.show()
 
 ![Pie Chart](./Data/Figure_5_12_Pie_Chart.jpg)
 
-#### Prompt — Pie chart and Bar Chart
+#### Reversed Prompt — Pie chart and Bar Chart
 
 ```
-You are a data visualization assistant supporting an **Advanced Exploratory Data Analysis (AEDA)** course.
+You are a data visualization assistant supporting an **Exploratory Data Analysis (EDA)** course.
 
 Your task is to **analyze and compare categorical proportions using complementary visualizations** across two real-world datasets from different application domains.
 
@@ -919,6 +962,12 @@ A variation of the pie chart that shows proportions of a whole, but with a **hol
 - Overall balance or concentration of the distribution  
 - Optional center label can reinforce a key total or KPI (e.g., total count, overall rate)  
 
+#### Simple Prompt
+```
+Plot the doughnut chart for variables 'Margin' of the Mammographic dataset, and 'Day' of the 
+Forest Fires dataset - Use percentage values for the grouped bar chart.
+```
+
 #### Python Code — Doughnut chart
 
 ```python
@@ -964,7 +1013,7 @@ plt.show()
 
 ![Doughnut Chart](./Data/Figure_5_13_Doughnut_Chart.jpg)
 
-#### Prompt — Doughnut chart
+#### Reversed Prompt — Doughnut chart
 ```
 You are a data visualization assistant supporting an **Advanced Exploratory Data Analysis (AEDA)** course.
 
@@ -1013,6 +1062,12 @@ To visualize **proportions** using nested rectangles, especially for **many cate
 - Dominant categories and how the total is partitioned  
 - Within-group composition when hierarchical nesting is present  
 - Patterns of concentration (few large rectangles vs. many small ones)  
+
+#### Simple Prompt
+```
+Generate the treemap for the Gapminder dataset having the countries as the 
+rectangles, their GDP in the slice sizes, and the continents in the colors
+```
 
 #### Python Code — Treemap
 
@@ -1063,9 +1118,9 @@ fig.show()
 
 ![Treemap](./Data/Figure_5_15_Treemap_Gapminder.jpg)
 
-#### Prompt — Treemap
+#### Reversed Prompt — Treemap
 ```
-You are a data visualization assistant supporting an **Advanced Exploratory Data Analysis (AEDA)** course.
+You are a data visualization assistant supporting an **Exploratory Data Analysis (EDA)** course.
 
 Your task is to **analyze and communicate hierarchical proportions using a treemap visualization** based on a global socioeconomic dataset.
 
@@ -1121,6 +1176,12 @@ To visualize **trends and temporal evolution** by showing how a value changes ov
 - Peaks, dips, and change points (sudden shifts)  
 - Differences between groups when multiple lines are shown  
 
+#### Simple Prompt
+```
+Create the line charts for Life Expectancy, CO2 Consumption, and 
+HDI index vs the year for the Gapminder dataset
+```
+
 #### Python Code — Line chart (time series example)
 
 ```python
@@ -1153,9 +1214,9 @@ plt.show()
 
 ![Line Chart](./Data/Figure_5_16a_Line_Chart.jpg)
 
-#### Prompt — Line chart (time series example)
+#### Reversed Prompt — Line chart (time series example)
 ```
-You are a data visualization assistant supporting an **Advanced Exploratory Data Analysis (AEDA)** course.
+You are a data visualization assistant supporting an **Exploratory Data Analysis (EDA)** course.
 
 Your task is to **analyze temporal trends using line charts** for multiple socioeconomic indicators derived from a global dataset.
 
@@ -1200,6 +1261,11 @@ To visualize **flows** between stages or categories (source → target), emphasi
 - Bottlenecks, losses, or concentration of flow in specific routes  
 - Comparison of contributions from different sources to the same target  
 
+#### Simple Prompt
+```
+Plot a Sankey chart that illustrates the flow of an academic career progression
+```
+
 #### Python Code — Sankey chart
 
 ```python
@@ -1233,7 +1299,7 @@ fig.show()
 
 ![Sankey Chart](./Data/Figure_5_17_Sankey_Chart.jpg)
 
-#### Prompt — Sankey chart
+#### Reversed Prompt — Sankey chart
 ```
 You are a data visualization assistant supporting an **Advanced Exploratory Data Analysis (AEDA)** course.
 
@@ -1282,6 +1348,11 @@ To visualize **tasks over time**, showing when activities start, how long they l
 - Critical periods with many concurrent tasks (workload concentration)  
 - Schedule gaps, delays, or potential bottlenecks (tasks that constrain progress)  
 
+#### Simple Prompt
+```
+Plot a Gantt chart to show the career evolution for the stages in the previous Sankey Chart
+```
+
 #### Python Code — Gantt chart
 
 ```python
@@ -1314,9 +1385,9 @@ fig.show()
 
 ![Gantt Chart](./Data/Figure_5_18_Gantt_Chart.jpg)
 
-#### Prompt — Gantt chart
+#### Reversed Prompt — Gantt chart
 ```
-You are a data visualization assistant supporting an **Advanced Exploratory Data Analysis (AEDA)** course.
+You are a data visualization assistant supporting an **Exploratory Data Analysis (EDA)** course.
 
 Your task is to **represent the temporal evolution of a structured process using a Gantt chart**, focusing on how different stages unfold over time.
 
@@ -1367,6 +1438,11 @@ To visualize **spatial variation** of a variable aggregated by region (e.g., cou
 - Outlier regions that differ strongly from neighbors  
 - Broad geographic trends (e.g., coastal vs inland, north vs south)  
 
+#### Simple Prompt
+```
+Plot a choropleth map for population estimate of the naturalearth_lowres dataset
+```
+
 #### Python Code — Choropleth 
 
 ```python
@@ -1405,9 +1481,9 @@ plt.show()
 
 ![Choropleth Map](./Data/Figure_5_19_Choropleth_Map.jpg)
 
-#### Prompt — Choropleth 
+#### Reversed Prompt — Choropleth 
 ```
-You are a data visualization assistant supporting an **Advanced Exploratory Data Analysis (AEDA)** course.
+You are a data visualization assistant supporting an **Exploratory Data Analysis (EDA)** course.
 
 Your task is to **explore and compare spatial variation using choropleth maps**, highlighting how different classification choices affect interpretation.
 
@@ -1456,6 +1532,11 @@ To represent quantities at geographic locations using **circles sized by magnitu
 - Outlier locations with unusually large or small values  
 - Broad spatial patterns that emerge from point-wise variation (e.g., regional hotspots)  
 
+#### Simple Prompt
+```
+Plot the Bubble chart for the Gapminder dataset.
+```
+
 #### Python Code — Bubble map
 
 ```python
@@ -1486,9 +1567,9 @@ fig.show()
 
 ![Bubble Map](./Data/Figure_5_21a_Bubble_Map.jpg)
 
-#### Prompt — Bubble map
+#### Reversed Prompt — Bubble map
 ```
-You are a data visualization assistant supporting an **Advanced Exploratory Data Analysis (AEDA)** course.
+You are a data visualization assistant supporting an **Exploratory Data Analysis (EDA)** course.
 
 Your task is to **visualize geographic variation in quantitative data using a bubble map**, combining spatial location with magnitude and categorical grouping.
 
