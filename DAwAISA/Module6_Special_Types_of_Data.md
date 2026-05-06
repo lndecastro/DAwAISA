@@ -70,6 +70,11 @@ Time series visualization most commonly uses **line charts** (value vs. time), p
 - **Scatterplot matrices** to inspect relationships among multiple time-indexed variables.
 - **Heatmaps/correlograms** for correlation structures.
 
+#### Simple Prompt
+```
+Generate the line charts, boxplots, scatterplot matrix and heatmap of the Daily Delhi Climate Train Data
+```
+
 #### Python Code — Line charts, boxplots, scatterplot matrix and heatmap
 
 ```python
@@ -121,10 +126,10 @@ plt.show()
 ![Time Series Visualizations](./Data/Figure_6_3_Scatterplot_Matrix.jpg) <p>
 ![Time Series Visualizations](./Data/Figure_6_4_Heatmap_Daily_Delhi.jpg) <p>
 
-#### Prompt — Line charts, boxplots, scatterplot matrix and heatmap
+#### Reversed Prompt — Line charts, boxplots, scatterplot matrix and heatmap
 
 ```
-You are a data visualization assistant supporting an **Advanced Exploratory Data Analysis (AEDA)** course.
+You are a data visualization assistant supporting an **Exploratory Data Analysis (EDA)** course.
 
 Your task is to **exploratorily visualize a multivariate climate time series dataset** in order to understand temporal behavior, distributional properties, relationships among variables, and correlation structure.
 
@@ -175,6 +180,11 @@ where $SMA_t$ is the smoothed value of the time series at time $t$, obtained aft
 
 Larger windows produce smoother curves but can blur short-term changes.
 
+#### Simple Prompt
+```
+Plot the moving averages for variables 'meantemp' and 'humidity' of the Daily Delhi Climate Train Data
+```
+
 #### Python Code — Moving averages for variables 'meantemp' and 'humidity'
 
 ```python
@@ -221,7 +231,7 @@ plt.show()
 ![Moving averages](./Data/Figure_6_5a_Moving_Averages_w5.jpg) <p>
 ![Moving averages](./Data/Figure_6_5b_Moving_Averages_w20.jpg)
 
-#### Prompt — Moving averages for variables 'meantemp' and 'humidity'
+#### Reversed Prompt — Moving averages for variables 'meantemp' and 'humidity'
 ```
 You are a data visualization assistant supporting an **Advanced Exploratory Data Analysis (AEDA)** course.
 
@@ -273,6 +283,11 @@ $y_t = T_t + S_t + R_t$
 - **Multiplicative:**
 $y_t = T_t \cdot S_t \cdot R_t$
 
+**Simple Prompt**
+```
+Plot the time series decomposition of the 'meantemp' variable of the Daily Delhi Climate Train data
+```
+
 **Python Code — Time series decomposition of the 'meantemp' variable**
 
 ```python
@@ -313,9 +328,9 @@ plt.show()
 
 ![Seasonal decomposition](./Data/Figure_6_6_Time_Series_Decomposition.jpg)
 
-**Prompt — Time series decomposition of the 'meantemp' variable**
+**Reversed Prompt — Time series decomposition of the 'meantemp' variable**
 ```
-You are a data visualization assistant supporting an **Advanced Exploratory Data Analysis (AEDA)** course.
+You are a data visualization assistant supporting an **Exploratory Data Analysis (EDA)** course.
 
 Your task is to **decompose a climate-related time series into its fundamental components** in order to better understand its underlying structure.
 
@@ -488,10 +503,10 @@ stemmed_docs = [" ".join([stemmer.stem(word) for word in word_tokenize(doc)])
 Stopwords contained in the stopwords file in NLTK:
 {'she', 'themselves', 'doesn', 'such', 'at', "doesn't", 'so', 'when', "shan't", 'no', "hadn't", 'is', 'these', 'was', 'be', "wasn't", "i'll", 'it', 'ourselves', 'to', "should've", "shouldn't", 'couldn', 'or', "we'll", 'if', 'wouldn', "he'll", 'himself', 'each', 'has', 'aren', 'only', "it's", "didn't", 'who', 'through', 'while', 'weren', 'been', 'same', 'its', 'for', 'hadn', 'shan', 'under', 'with', 'y', 'hasn', 'had', 'what', 'hers', 'against', 'me', 'they', 'more', "mustn't", 've', 'does', 'ours', 'between', 'my', 'out', 'those', 'too', 'will', 'wasn', 'very', "aren't", 'until', 'are', 'didn', 'itself', "i'm", "he'd", 'both', 'mustn', "they've", 'now', 'doing', 'their', 'during', 'the', 'don', "that'll", 'an', 'here', 'him', 'herself', 'theirs', "she's", 'd', 'isn', 'up', "hasn't", 'down', "they'll", "she'd", 'myself', 'all', 'again', 'that', 'being', 'you', "isn't", 'then', 'there', 'her', 'our', 'as', 'any', 'of', "we're", 're', 'after', 'whom', "you're", "it'll", 'about', 'yours', "he's", 'ma', 'but', 'did', "you've", "couldn't", 'he', 'won', 'from', 'some', 'am', 'few', 'before', 'yourself', 'his', "it'd", 'nor', "needn't", 'own', 'll', 'off', 's', 'do', 'just', 'than', 'other', 'above', 'over', 'we', 'on', 'which', 'can', "she'll", "they're", 'why', "we've", 'by', "mightn't", 'i', "i've", 'ain', 'below', 'your', 'once', "you'll", 'further', "i'd", 'them', 'because', "they'd", 'where', 'o', 'this', 'into', 'should', 'most', 'having', 'shouldn', "you'd", 'mightn', 'a', "weren't", "don't", 'and', 'were', 't', 'in', 'have', "we'd", 'needn', 'not', 'yourselves', 'haven', "won't", "wouldn't", 'm', "haven't", 'how'}
 
-#### Prompt — Structure texts using Lexical Representations (Part 1)
+#### Reversed Prompt — Structure texts using Lexical Representations (Part 1)
 
 ```
-You are a data analysis assistant supporting an **Advanced Exploratory Data Analysis (AEDA)** course.
+You are a data analysis assistant supporting an **Exploratory Data Analysis (EDA)** course.
 
 Your task is to **exploratorily structure a large collection of text documents** in preparation for descriptive analysis and visualization.
 
@@ -611,6 +626,12 @@ TF-IDF Data Matrix: <br>
 
 Useful descriptive statistics for a corpus include word count, unique word count, vocabulary size, most common words, sentence count, and stop-word count. Readability and part-of-speech distributions provide additional insight into linguistic complexity and style.
 
+#### Simple Prompt
+```
+Perform the Descriptive Statistics for the IMDb Dataset, including Word Count, Unique Word Count, Vocabulary Size,
+Average Word Length, Most Common Words, Sentence Count, Average Sentence Length, and Number of Stopwords.
+```
+
 #### Python Code — Code to generate simple descriptive statistics for text data
 
 ```python
@@ -678,9 +699,9 @@ Sentence Count: 65,258 <br>
 Average Sentence Length: 23.369119494927826 <br>
 Number of Stop words : 595,438 <br>
 
-#### Prompt — Prompt to generate simple descriptive statistics for text data
+#### Reversed Prompt — Prompt to generate simple descriptive statistics for text data
 ```
-You are a data analysis assistant supporting an **Advanced Exploratory Data Analysis (AEDA)** course.
+You are a data analysis assistant supporting an **Exploratory Data Analysis (EDA)** course.
 
 Your task is to **perform a descriptive exploratory analysis of a large text corpus** in order to characterize its linguistic structure and basic statistical properties.
 
@@ -734,6 +755,11 @@ Common text visualizations include:
 - **Co-occurrence networks** (relationships among terms)
 - **Parse trees / dependency graphs** (syntactic structure)
 
+#### Simple Prompt
+```
+Generate a Tag Cloud and a Frequency Distribution of the words in the IMDb corpus
+```
+
 #### Python Code — Code to generate a Tag Cloud and a Frequency Distribution of the words in the IMDb corpus
 
 ```python
@@ -785,9 +811,9 @@ plt.show()
 ![Tag Cloud](./Data/Figure_6_7a_TagCloud_IMDb.jpg)
 ![Frequency Distribution](./Data/Figure_6_7b_BarChart_IMDb.jpg)
 
-#### Prompt — Prompt to generate a Tag Cloud and a Frequency Distribution of the words in the IMDb corpus
+#### Reversed Prompt — Prompt to generate a Tag Cloud and a Frequency Distribution of the words in the IMDb corpus
 ```
-You are a data visualization assistant supporting an **Advanced Exploratory Data Analysis (AEDA)** course.
+You are a data visualization assistant supporting an **Exploratory Data Analysis (EDA)** course.
 
 Your task is to **visually explore the lexical composition of a large text corpus** by highlighting the most prominent words and their relative importance.
 
@@ -827,6 +853,11 @@ The resulting visualization should provide:
 - A starting point for deeper textual descriptive analysis or comparison with other corpora.
 
 The emphasis should be on **conceptual understanding and exploratory insight**, not on implementation details or low-level programming mechanics.
+```
+
+#### Simple Prompt
+```
+Generate the Dependency Parse Tree for the IMDb dataset.
 ```
 
 #### Python Code — Code to generate the Dependency Parse Tree for the IMDb dataset
@@ -929,6 +960,11 @@ A tree can be summarized using a set of structural measures that capture its siz
 
 These measures provide a concise descriptive characterization of the structure and complexity of tree-based data.
 
+#### Simple Prompt
+```
+Create an example tree representing income and expenses, and perform the descriptive analysis of this tree
+```
+
 #### Python Code — Descriptive analysis of trees
 
 ```python
@@ -1018,9 +1054,7 @@ for node in nodes:
     print(f"{node}: {level_dict[node]}")
 ```
 
-#### Exercise 3: Run the code for the descriptive analysis of trees and discuss the results obtained.
-
-#### Prompt — Descriptive analysis of trees
+#### Reversed Prompt — Descriptive analysis of trees
 
 ```
 You are a data visualization and analysis assistant supporting an **Advanced Exploratory Data Analysis (AEDA)** course.
@@ -1074,6 +1108,11 @@ The emphasis should be on **conceptual understanding of tree-based descriptive a
 
 Tree visualization methods include **non-space-filling** (node-link diagrams) and **space-filling** approaches such as **treemaps** and **sunburst charts**.
 
+#### Simple Prompt
+```
+Generate a partial genealogic tree of Queen Elizabeth II of England
+```
+
 #### Python Code — Code to generate partial genealogic tree representation
 
 ```python
@@ -1126,7 +1165,7 @@ plt.axis("off")
 
 ![Genealogic tree](./Data/Figure_6_13_Genealogic_Trees.jpg)
 
-#### Prompt — Prompt to generate partial genealogic tree representation
+#### Reversed Prompt — Prompt to generate partial genealogic tree representation
 ```
 You are a data visualization assistant supporting an **Advanced Exploratory Data Analysis (AEDA)** course.
 
@@ -1204,7 +1243,7 @@ fig.show()
 
 ![Treemap](./Data/Figure_6_14_Treemap_Budget_Tree.jpg)
 
-#### Python Code — Sunburst example with the Budget Tree synthetic data
+#### Reveresed Python Code — Sunburst example with the Budget Tree synthetic data
 
 ```python
 # CODE 6.12
@@ -1291,6 +1330,11 @@ Network descriptive analysis often includes a set of quantitative measures that 
 
 Together, these measures provide a comprehensive descriptive summary of a network’s **scale, connectivity, cohesion, and structural roles of nodes**, forming the foundation for exploratory analysis before advanced modeling or inference.
 
+#### Simple Prompt
+```
+Perform the Descriptive Statistics of the Zachary's Karate Club Social Network
+```
+
 #### Python Code — Code to calculate Descriptive Statistics of the Zachary's Karate Club Network
 
 ```python
@@ -1331,9 +1375,7 @@ for node, centrality in nx.eigenvector_centrality(G).items():
     print(f"Node {node}: {centrality:.4f}")
 ```
 
-#### Exercise 4: Run the code for the descriptive analysis of the Zachary's Karate Club Social Network.
-
-#### Prompt — Prompt to calculate Descriptive Statistics of the Zachary's Karate Club Network
+#### Reversed Prompt — Prompt to calculate Descriptive Statistics of the Zachary's Karate Club Network
 ```
 You are a data analysis assistant supporting an **Advanced Exploratory Data Analysis (AEDA)** course.
 
@@ -1394,6 +1436,11 @@ Common network visualizations rely on **node–link diagrams**, where nodes repr
 
 Visual encoding choices, such as node size, color, and edge thickness, can be used to represent descriptive measures like degree, centrality, or edge weight. However, network visualizations can quickly become cluttered as the number of nodes and edges increases. As a result, effective visualization requires careful layout selection, selective encoding, and, when necessary, abstraction or filtering to preserve interpretability while revealing meaningful structural patterns.
 
+#### Simple Prompt
+```
+Create visualizations of the Zachary's Karate Club Social Network using different network layouts.
+```
+
 #### Python Code — Code to Visualize the Zachary's Karate Club Social Network in different layouts
 
 ```python
@@ -1442,9 +1489,9 @@ plt.show()
 ![Network layouts](./Data/Figure_6_16a_Network_Layouts.jpg)
 ![Network layouts](./Data/Figure_6_16b_Network_Layouts.jpg)
 
-#### Prompt — Prompt to Visualize the Zachary's Karate Club Social Network in different layouts
+#### Reveresed Prompt — Prompt to Visualize the Zachary's Karate Club Social Network in different layouts
 ```
-You are a data visualization assistant supporting an **Advanced Exploratory Data Analysis (AEDA)** course.
+You are a data visualization assistant supporting an **Exploratory Data Analysis (EDA)** course.
 
 Your task is to **visually explore and compare different network layout strategies** using a well-known social network dataset, the Zachary's Karate CLub Social Network, in order to understand how layout choice influences interpretation of network structure.
 
