@@ -2,7 +2,7 @@
 
 This module integrates **exploratory data analysis, visualization principles, and communication** to transform analytical results into meaningful insights for decision-making. Data storytelling focuses on crafting a coherent narrative grounded in evidence, while dashboard design emphasizes interactive, visual summaries that support monitoring, exploration, and action.
 
-Together, these components represent the culmination of Advanced Exploratory Data Analysis (AEDA): moving from data understanding to **insight communication and decision support**.
+Together, these components represent the culmination of Exploratory Data Analysis (EDA): moving from data understanding to **insight communication and decision support**.
 
 ## Learning Objectives
 
@@ -93,6 +93,109 @@ The table below brings together the four core principles of storytelling design:
 | • Specific group or individuals: demographics, interests, and knowledge level.<br>• Clarify the objectives through the narrative. | • What questions do you want to answer with the data?<br>• What kind of relationships exist in the data?<br>• What are the best techniques for displaying the variables and their relationships? |
 | **Key Message and Depth** | **Compelling Narrative** |
 | • Central theme or insight: clear, concise, and relevant.<br>• Depth: level of detail, context, and supporting data. | • Persuasive and impactful presentation.<br>• Guide the audience through the insights and information. |
+
+## Prompt Exercise: Building a Data Story with an LLM
+
+In this exercise, you will use a Large Language Model (LLM) as a collaborative assistant to construct a complete data story for the **Superstore Sales dataset**, following the four-step storytelling design process introduced in this module. You will write, refine, and evaluate a sequence of prompts, one per storytelling step, and critically assess the quality of the LLM's responses.
+
+The goal is not simply to get the LLM to produce output, but to learn how **prompt design choices** shape the depth, structure, and usefulness of that output.
+
+### Background: The Superstore Dataset
+
+The Superstore Sales dataset contains retail transaction records across the United States. Its 18 variables cover order logistics, customer segments, product categories and sub-categories, geographic attributes (city, state, region), and sales figures. Use this context in all your prompts — you do not need to upload the actual data file unless your LLM interface supports it.
+
+### Part 1 — Step-by-Step Prompt Sequence
+
+Work through each step in order. For each step, you will: **(a)** write your initial prompt, **(b)** record the LLM's response (summarized or quoted briefly), and **(c)** write a refined follow-up prompt if the first response was incomplete or misaligned.
+
+#### Step 1 · Audience and Purpose
+
+**Your task:** Prompt the LLM to define a specific audience and a clear analytical purpose for a data story about Superstore Sales.
+
+**Starter prompt to adapt and improve:**
+```
+I am building a data story using the Superstore Sales dataset, which contains 18 variables covering orders, customers, products, geography, and sales values across the United States. Help me define an appropriate audience and purpose for this story. Be specific about who the audience is, what decisions they need to make, and what level of technical detail is appropriate.
+```
+
+**Guidance questions to help you refine your prompt:**
+- Did the LLM produce a single, specific audience, or a vague generic one (e.g., "business stakeholders")?
+- Did it connect the audience's role to the specific variables available in the dataset?
+- If the output was too generic, add a constraint, for example, specify the audience role (sales manager, regional director, executive) or the decision context (quarterly review, product strategy meeting).
+
+**Deliverable:** Save your best prompt and the LLM's response. Write 2–3 sentences evaluating how well the output aligns with the audience-and-purpose principle from the module.
+
+#### Step 2 · Key Message and Depth
+
+**Your task:** Prompt the LLM to identify one central insight and determine the appropriate level of analytical depth for the audience defined in Step 1.
+
+**Starter prompt to adapt and improve:**
+```
+Based on the audience and purpose we defined, identify the single most important message that a data story about Superstore Sales should communicate. Then describe the appropriate level of depth: what high-level summary should be shown first, what supporting evidence is needed, and what detail can be omitted or placed in a secondary view?
+```
+
+**Guidance questions to help you refine your prompt:**
+- Did the LLM commit to one central message, or produce a list of several equally weighted ones?
+- Did it connect depth decisions to the audience (e.g., executives need high-level KPIs; analysts need breakdowns)?
+- Try prompting the LLM to justify each depth decision with a reason tied to the audience's goals.
+
+**Deliverable:** Save your best prompt and the LLM's response. Write 2–3 sentences evaluating whether the key message is focused and whether the depth layering is appropriate for the audience.
+
+#### Step 3 · Exploratory Analysis Plan
+
+**Your task:** Prompt the LLM to outline the exploratory analysis questions and variable relationships that would provide the evidence needed to support the key message.
+
+**Starter prompt to adapt and improve:**
+```
+Now outline the exploratory data analysis that should be performed on the Superstore dataset to support the key message identified. For each analysis question, specify: (1) which variables are involved, (2) what type of relationship or pattern to look for, and (3) which visualization type would best display the result. Organize your response around the four EDA goals from the module: distributions, associations, trends, and anomalies.
+```
+
+**Guidance questions to help you refine your prompt:**
+- Did the LLM stay grounded in the actual Superstore variables (e.g., Sales, Category, Region, Order Date), or did it invent variables not in the dataset?
+- Did it suggest visualization types that are appropriate for the variable types involved (e.g., time series for Order Date vs. Sales, bar chart for Category vs. Sales)?
+- If the LLM hallucinated variables, add an explicit list of available variables to your prompt.
+
+**Deliverable:** Save your best prompt and the LLM's response. Identify one EDA suggestion you find well-grounded and one that you would revise or reject, explaining why.
+
+#### Step 4 · Compelling Narrative
+
+**Your task:** Prompt the LLM to write a complete data narrative following the five-part structure from the module: Context → Question → Evidence → Insight → Implications.
+
+**Starter prompt to adapt and improve:**
+```
+Using the audience, key message, and exploratory analysis plan we have developed, write a data story narrative for the Superstore Sales dataset. Structure the narrative in five parts: (1) Context — why this analysis matters, (2) Question — what is being investigated, (3) Evidence — key findings with specific variable references, (4) Insight — what the evidence means, and (5) Implications — what actions or decisions should follow. Write for the audience we defined. Keep the narrative concise and avoid technical jargon.
+```
+
+**Guidance questions to help you refine your prompt:**
+- Is the narrative logically sequenced, or does it jump between sections?
+- Does the Evidence section reference specific patterns (e.g., particular categories, regions, or time periods) rather than vague generalizations?
+- Is the tone and vocabulary appropriate for the defined audience?
+- Try asking the LLM to revise a specific section that felt weak and observe how the output changes.
+
+**Deliverable:** Save your best prompt and the LLM's final narrative. Annotate each of the five narrative sections directly in your submission (label them C, Q, E, I, Im).
+
+### Part 2 — Critical Reflection
+
+Answer the following questions individually, in your own words. Each response should be 3–5 sentences.
+
+1. **Prompt precision:** How did your prompts change from your first attempt to your refined version in each step? What specific changes led to better outputs?
+
+2. **Hallucination and grounding:** Did the LLM at any point introduce variables, statistics, or claims that are not present in or supported by the Superstore dataset? How did you detect and correct this?
+
+3. **Narrative quality:** Compare the LLM's narrative (Step 4) against the five-part structure. Which section was strongest and which was weakest? What does this suggest about how LLMs handle storytelling versus analysis?
+
+4. **Human vs. LLM roles:** Based on this exercise, which parts of the data storytelling process benefit most from LLM assistance, and which parts still require human judgment? Justify your answer using specific examples from your session.
+
+5. **Ethical consideration:** If this LLM-generated story were presented to real decision-makers without disclosure that it was AI-assisted, what risks could arise? How does this connect to the module's discussion of evidence-based storytelling?
+
+### Submission Requirements
+
+Submit a single document containing:
+
+- Your prompt-response record for all four steps (Parts 1a–1d), including your evaluation notes.
+- Your Part 2 reflection responses.
+- A one-paragraph **Summary Assessment**: overall, how effective was the LLM as a storytelling collaborator, and what would you do differently in a real project?
+
+**Format:** Follow the course report template. Maximum length: 6 pages excluding cover page.
 
 ## 7.2 Dashboard Design
 
