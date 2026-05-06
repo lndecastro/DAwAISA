@@ -31,7 +31,7 @@ Distributions can be explored numerically and visually (e.g., frequency tables, 
 To illustrate, consider the mammographic dataset. 
 Variable ‘Shape’ can assume the values ‘Irregular’, ‘Round’, ‘Oval’, ‘Lobular’, and there are also missing values represented by a question mark ‘?’. 
 
-### Simple Prompting
+### Simple Prompt
 ```
 For the Mammographic dataset create a table for the frequency of variable ‘Shape’ with the absolute frequency (count), relative frequency,
 and cumulative frequency of each of its possible values, including the missing values, and plot a pie chart with its relative frequency
