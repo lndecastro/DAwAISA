@@ -94,7 +94,7 @@ The table below brings together the four core principles of storytelling design:
 | **Key Message and Depth** | **Compelling Narrative** |
 | • Central theme or insight: clear, concise, and relevant.<br>• Depth: level of detail, context, and supporting data. | • Persuasive and impactful presentation.<br>• Guide the audience through the insights and information. |
 
-## Prompt Exercise: Building a Data Story with an LLM
+## 7.2 Prompt Exercise: Building a Data Story with an LLM
 
 In this exercise, you will use a Large Language Model (LLM) as a collaborative assistant to construct a complete data story for the **Superstore Sales dataset**, following the four-step storytelling design process introduced in this module. You will write, refine, and evaluate a sequence of prompts, one per storytelling step, and critically assess the quality of the LLM's responses.
 
@@ -197,7 +197,7 @@ Submit a single document containing:
 
 **Format:** Follow the course report template. Maximum length: 6 pages excluding cover page.
 
-## 7.2 Dashboard Design
+## 7.3 Dashboard Design
 
 A **dashboard** is an interactive visual interface that consolidates key indicators, trends, and patterns into a single view. Dashboards are widely used for **monitoring performance, supporting decisions, crafting stories, and enabling exploratory analysis**.
 
@@ -212,7 +212,7 @@ The figure below summarizes the main steps  involved in the process of designing
 ![Dashboard Design Process Flow](./Data/DDProcessFlow.png)
 **Figure:** Dashboard design process flow.
 
-### 7.2.1 Selecting Appropriate Visualizations
+### 7.3.1 Selecting Appropriate Visualizations
 
 Visualization choices in dashboards should follow the same principles discussed in earlier modules:
 
@@ -227,7 +227,7 @@ Common dashboard elements include:
 * Bar charts for comparisons
 * Maps for spatial patterns
 
-### 7.2.2 Designing the Dashboard Layout
+### 7.3.2 Designing the Dashboard Layout
 
 Layout strongly influences usability and comprehension. Effective layouts:
 
@@ -238,7 +238,7 @@ Layout strongly influences usability and comprehension. Effective layouts:
 
 A common strategy is a **top-down layout**, where high-level KPIs appear at the top and detailed views appear below.
 
-### 7.2.3 Choosing a Color Scheme
+### 7.3.3 Choosing a Color Scheme
 
 Color should be used intentionally and sparingly. Good practices include:
 
@@ -249,7 +249,7 @@ Color should be used intentionally and sparingly. Good practices include:
 
 Neutral colors are often preferable for backgrounds, while accent colors can highlight critical values, changes, or exceptions.
 
-### 7.2.4 Applying Interactivity
+### 7.3.4 Applying Interactivity
 
 Interactivity allows users to explore data dynamically. Common interactive features include:
 
@@ -260,7 +260,7 @@ Interactivity allows users to explore data dynamically. Common interactive featu
 
 Interactivity should enhance insight, not overwhelm the user. Each interactive element should have a clear purpose.
 
-### 7.2.5 Security and Access Control
+### 7.3.5 Security and Access Control
 
 Dashboards often expose sensitive or strategic information. Key considerations include:
 
@@ -271,7 +271,7 @@ Dashboards often expose sensitive or strategic information. Key considerations i
 
 Security should be addressed early in the design process, not as an afterthought.
 
-### 7.2.6 Test and Iterate
+### 7.3.6 Test and Iterate
 
 Dashboard design is inherently iterative. Testing should involve:
 
@@ -281,7 +281,147 @@ Dashboard design is inherently iterative. Testing should involve:
 
 Continuous iteration ensures that dashboards remain aligned with evolving data, goals, and user needs.
 
-## 7.3 Case Study: Superstore Sales Dataset
+## 7.4 Prompt Exercise: Designing a Dashboard with an LLM
+
+In this exercise, you will use a Large Language Model (LLM) as a collaborative design assistant to plan and specify a complete interactive dashboard for the **Superstore Sales dataset**, following the six-step dashboard design process introduced. You will write, refine, and evaluate a sequence of prompts, one per design step, and critically assess the quality and practical usefulness of the LLM's outputs.
+
+The goal is not to have the LLM build a dashboard for you, but to use it to make **informed, justified design decisions** at every stage of the process, decisions you could hand to a developer or implement yourself in a BI tool such as Power BI, Tableau, or Python (Dash/Plotly).
+
+### Background: The Superstore Dataset
+
+The Superstore Sales dataset contains retail transaction records across the United States. Its 18 variables cover order logistics (Order Date, Ship Date, Ship Mode), customer attributes (Segment, Region, State), product classification (Category, Sub-Category, Product Name), and sales performance (Sales). Use this context in every prompt — the LLM should ground all design recommendations in the actual variables available.
+
+### Part 1 — Step-by-Step Prompt Sequence
+
+Work through each step in order. For each step, you will: **(a)** write your initial prompt, **(b)** record the LLM's response (summarized or quoted briefly), and **(c)** write a refined follow-up prompt if the first response was incomplete or misaligned with module principles.
+
+#### Step 1 · Select Appropriate Visualizations
+
+**Your task:** Prompt the LLM to recommend a set of visualization types for the dashboard, matched to the analytical questions and variables of the Superstore dataset.
+
+**Starter prompt to adapt and improve:**
+```
+I am designing a dashboard for the Superstore Sales dataset, which has 18 variables including Order Date, Ship Date, Ship Mode, Customer Segment, Region, State, Category, Sub-Category, Product Name, and Sales. The intended audience is sales managers and business analysts who need to monitor sales performance and identify trends. Recommend a specific set of visualizations for the dashboard. For each one, state: (1) the chart type, (2) the variables it displays, (3) the analytical question it answers, and (4) why this chart type is appropriate for those variables.
+```
+
+**Guidance questions to help you refine your prompt:**
+- Did the LLM recommend chart types that are appropriate for the variable types involved (e.g., line chart for Sales over Order Date, bar chart for Sales by Category)?
+- Did it include a KPI element for high-level summary metrics, as shown in the module's case study?
+- Did it avoid unnecessary or exotic chart types that would confuse the target audience?
+- If any recommendation seems mismatched to the data type, push back by specifying the variable type (categorical, continuous, temporal) and ask for a revised recommendation.
+
+**Deliverable:** Save your best prompt and the LLM's response. Write 2–3 sentences evaluating whether the visualization choices are appropriate, grounded in the available variables, and aligned with the audience's monitoring needs.
+
+#### Step 2 · Design the Dashboard Layout
+
+**Your task:** Prompt the LLM to produce a textual wireframe or layout specification that describes where each visualization will be positioned in the dashboard.
+
+**Starter prompt to adapt and improve:**
+```
+Using the visualizations we selected, propose a layout for the dashboard. Describe where each element should be placed — top, left panel, center, bottom — and explain the reasoning behind each placement decision. The layout should follow a top-down visual hierarchy, placing the most important information first. Also describe how related elements should be grouped and how whitespace should be used to separate sections.
+```
+
+**Guidance questions to help you refine your prompt:**
+- Did the LLM place the KPI at the top of the dashboard, consistent with the top-down hierarchy principle from the module?
+- Did it group related charts logically (e.g., time-series views together, geographic view near regional breakdowns)?
+- Did it address element sizing — giving larger panels to more complex or important charts?
+- If the layout felt cluttered or unstructured, ask the LLM to produce a grid-based description (e.g., "3-column, 2-row grid") and assign each visualization to a cell.
+
+**Deliverable:** Paste your best prompt and the LLM's layout description. Sketch or describe the wireframe in your submission based on the LLM's output, and annotate any placements you would change and why.
+
+#### Step 3 · Choose a Color Scheme
+
+**Your task:** Prompt the LLM to recommend a color scheme for the dashboard and justify each choice against the visualization principles from the module.
+
+**Starter prompt to adapt and improve:**
+```
+Recommend a color scheme for the Superstore Sales dashboard. Specify: (1) a primary accent color for key metrics and highlights, (2) a neutral background color, (3) how categorical variables such as Category or Segment should be encoded with color, and (4) how to handle positive versus negative performance indicators if applicable. Justify each choice using principles of color in data visualization: contrast, consistency, meaning, and accessibility.
+```
+
+**Guidance questions to help you refine your prompt:**
+- Did the LLM justify its color choices with a principle (e.g., contrast for readability, consistency across views, semantic meaning)?
+- Did it address color-blind safety? If not, ask it to revise the palette to be accessible to users with deuteranopia (the most common form of color blindness).
+- Did it recommend a consistent number of colors — avoiding rainbow palettes that encode no meaning?
+- Compare the LLM's recommendation to the module's case study, which used shades of green for positive connotation and contrast on a light background. Does the LLM's palette follow similar reasoning?
+
+**Deliverable:** Paste your best prompt and the LLM's response. Write 2–3 sentences evaluating whether the color scheme is principled, consistent, and accessible.
+
+#### Step 4 · Apply Interactivity
+
+**Your task:** Prompt the LLM to specify the interactive features of the dashboard, including filters, slicers, tooltips, and any linked views.
+
+**Starter prompt to adapt and improve:**
+```
+Specify the interactive features that should be included in the Superstore Sales dashboard. For each interactive element, describe: (1) the type of interaction (filter, slicer, tooltip, drill-down, linked view), (2) which variables or visualizations it affects, (3) how the user would trigger it, and (4) what analytical benefit it provides to the audience. Prioritize interactions that allow the user to filter by time period, shipment mode, and customer segment.
+```
+
+**Guidance questions to help you refine your prompt:**
+- Did the LLM include slicers for Year, Ship Mode, and Segment — the three filter dimensions highlighted in the module's case study?
+- Did it include tooltips for each visualization, providing exact values on hover?
+- Did it suggest any linked views (brushing and highlighting across charts), and if so, are those links analytically meaningful?
+- If the LLM proposed too many interactive elements, ask it to rank them by priority and identify the minimum set needed for a first usable version.
+
+**Deliverable:** Paste your best prompt and the LLM's response. Identify the two most valuable interactions recommended and explain why they support the audience's decision-making goals.
+
+#### Step 5 · Security and Access Control
+
+**Your task:** Prompt the LLM to outline the security and access considerations that would apply if this dashboard were deployed in a real organizational setting.
+
+**Starter prompt to adapt and improve:**
+```
+The Superstore Sales dashboard will be deployed internally within a retail organization and shared with sales managers, regional directors, and executive leadership. Outline the security and access control considerations for this deployment. Address: (1) role-based access control — which user roles should see which data, (2) any data that should be anonymized or restricted, (3) authentication requirements, and (4) compliance considerations relevant to internal business data.
+```
+
+**Guidance questions to help you refine your prompt:**
+- Did the LLM differentiate between user roles meaningfully (e.g., executives see aggregate views only; regional managers see only their own region's data)?
+- Did it address authentication (login, SSO) and not just authorization (who can see what)?
+- Did it treat security as a design-phase concern rather than an afterthought, consistent with the module's guidance?
+- If the LLM gave only generic security advice, push it to apply each recommendation specifically to the Superstore dashboard structure you have designed.
+
+**Deliverable:** Paste your best prompt and the LLM's response. Write 2–3 sentences evaluating whether the security plan is specific, role-differentiated, and aligned with the module's principle that security should be addressed early in design.
+
+#### Step 6 · Test and Iterate
+
+**Your task:** Prompt the LLM to design a user testing plan for the dashboard, specifying who should test it, what tasks they should perform, and what feedback to collect.
+
+**Starter prompt to adapt and improve:**
+```
+Design a user testing plan for the Superstore Sales dashboard before it is deployed. Specify: (1) who the test participants should be and why, (2) three representative tasks a tester would perform using the dashboard, (3) the questions or criteria used to evaluate clarity, usability, and usefulness, and (4) how feedback would be used to iterate on the design. Align the testing plan with the intended audience of sales managers and business analysts.
+```
+
+**Guidance questions to help you refine your prompt:**
+- Did the LLM select test participants that match the actual intended audience, rather than generic "users"?
+- Are the three tasks realistic and specific (e.g., "Find the total sales for the West region in 2017 using the map and slicer") rather than vague (e.g., "Explore the dashboard")?
+- Did it suggest both usability criteria (can the user complete the task?) and usefulness criteria (did the dashboard answer their question?)?
+- Did it describe what happens after testing — specifically how feedback translates into design changes?
+
+**Deliverable:** Paste your best prompt and the LLM's response. Write the three testing tasks in your own words and explain what aspect of the design each task is intended to validate.
+
+### Part 2 — Critical Reflection
+
+Answer the following questions individually, in your own words. Each response should be 3–5 sentences.
+
+1. **Prompt precision:** Across the six steps, which step required the most prompt refinement to get a useful response? What specific changes to the prompt made the biggest difference?
+
+2. **Design grounding:** At any point, did the LLM recommend visualizations, colors, or interactions that were not appropriate for the Superstore dataset's variables or the target audience? How did you identify and correct this?
+
+3. **Completeness vs. quality:** Did the LLM tend to produce responses that were comprehensive but shallow, or focused and well-justified? How does this affect how you would use an LLM in a real dashboard design project?
+
+4. **Human vs. LLM roles:** Which of the six design steps benefited most from LLM assistance, and which required the most human judgment to evaluate or override? Justify your answer with specific examples from your session.
+
+5. **Ethical and practical considerations:** If a dashboard designed entirely through LLM prompts were deployed in a real business without human expert review, what risks could arise — in terms of design quality, security, or analytical accuracy? How should practitioners safeguard against these risks?
+
+### Submission Requirements
+
+Submit a single document containing:
+
+- Your prompt-response record for all six steps (Steps 1–6), including evaluation notes.
+- Your Part 2 reflection responses.
+- A one-paragraph **Summary Assessment**: overall, how effective was the LLM as a dashboard design collaborator, and at which stage would you rely on it most versus least in a real project?
+
+**Format:** Follow the course report template. Maximum length: 8 pages excluding cover page.
+
+## 7.5 Case Study: Superstore Sales Dataset
 
 This case study integrates **data storytelling and dashboard design** using the Superstore Sales dataset, a widely used benchmark in business analytics.
 
@@ -291,7 +431,7 @@ The dataset typically includes:
 * Sales, profit, discounts, and quantities
 * Temporal and geographic dimensions
 
-### 7.3.1 Data Storytelling
+### 7.5.1 Data Storytelling
 
 The storytelling process begins by defining the business questions, such as:
 
@@ -301,7 +441,7 @@ The storytelling process begins by defining the business questions, such as:
 
 Exploratory analysis is used to identify trends, patterns, and anomalies, which are then synthesized into a coherent narrative tailored to decision-makers.
 
-### 7.3.2 Dashboard Design
+### 7.5.2 Dashboard Design
 
 The dashboard design phase translates the story into an interactive interface, typically including:
 
