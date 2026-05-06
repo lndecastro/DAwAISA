@@ -31,6 +31,12 @@ Distributions can be explored numerically and visually (e.g., frequency tables, 
 To illustrate, consider the mammographic dataset. 
 Variable ‘Shape’ can assume the values ‘Irregular’, ‘Round’, ‘Oval’, ‘Lobular’, and there are also missing values represented by a question mark ‘?’. 
 
+### Simple Prompting
+```
+For the Mammographic dataset create a table for the frequency of variable ‘Shape’ with the absolute frequency (count), relative frequency,
+and cumulative frequency of each of its possible values, including the missing values, and plot a pie chart with its relative frequency
+```
+
 ### Python Code
 The code snippet and table below show the frequency of variable ‘Shape’ with the absolute frequency (count), relative frequency, and cumulative frequency of each of its possible values, including the missing values, and a pie chart with its relative frequency.
 
@@ -74,7 +80,7 @@ figftable.pie(
 ![Variable ‘Shape’ in the mammographic dataset](./Data/Fig3_1.png) <p>
 **Figure:** Frequency table and pie chart of variable ‘Shape’ in the mammographic dataset.
 
-### Prompt — Descriptive Analysis of the *Shape* Variable (Mammographic Dataset)
+### Reversed Prompt — Descriptive Analysis of the *Shape* Variable (Mammographic Dataset)
 ```
 You are a data analysis assistant supporting an **Advanced Exploratory Data Analysis (AEDA)** course.
 
@@ -114,6 +120,11 @@ Ensure that all results follow standard **descriptive statistics** and **explora
 ```
 
 To illustrate how to build the frequency table of numeric variables (quantitative data), consider variable temperature (‘temp’) of the Forest Fires dataset.
+
+### Simple Prompt
+```
+Calculate and print the frequency distribution, frequency table and histogram of the continuous variables in the Forest Fires dataset
+```
 
 ### Python Code
 Code 3.2 presents a script to calculate and print the frequency table for a numeric variable (quantitative data) using the method Series() in Pandas. The script allows setting the number of bins (nbins), the inferior and superior limits of the histogram, and then builds and plots the dataframe with the bins and their respective frequencies.
@@ -156,7 +167,7 @@ sns.histplot(dforest, x=var, bins=fbins, kde=True)
 ![Histogram for variable temp](./Data/Fig3_2.png) <p>
 **Figure:** Histogram for the variable ‘temp’ of the Forest Fires dataset.
 
-### Prompt — Frequency Distribution, Frequency Table, and Histogram (Forest Fires Dataset)
+### Reversed Prompt — Frequency Distribution, Frequency Table, and Histogram (Forest Fires Dataset)
 ```
 You are a data analysis assistant supporting an **Advanced Exploratory Data Analysis (AEDA)** course.
 
@@ -202,6 +213,13 @@ Common distribution shapes include:
 
 Understanding shape helps guide the choice of summary statistics and models.
 
+### Simple Prompt
+```
+Generate a single multi-panel figure that visualizes **distributions with different shapes** for the following variables of the Forest Fires dataset: ["month", "day", "FFMC", "DMC", "DC", "ISI", "RH", "wind"]
+```
+
+### Python Code
+
 ```python
 # CODE 3.3
 # Plot distributions with different shapes
@@ -227,7 +245,7 @@ for idx, x_label in enumerate(x_labels):
 
 ![Histograms](./Data/Figure_3_2_Histograms.jpg)
 
-### Prompt — Plot Distributions with Different Shapes (Forest Fires Dataset)
+### Reversed Prompt — Plot Distributions with Different Shapes (Forest Fires Dataset)
 ```
 You are a data analysis assistant supporting an **Advanced Exploratory Data Analysis (AEDA)** course.
 
@@ -265,6 +283,13 @@ A **contingency table** (or cross-tabulation) summarizes the relationship betwee
 
 Contingency tables are fundamental for analyzing categorical associations.
 
+### Simple Prompt
+```
+Using the **Mammographic Mass dataset** from the UCI Machine Learning Repository in its original form, generate **contingency tables** to analyze the relationship between selected categorical variables and the target variable **`Severity`**.
+```
+
+### Python Code
+
 ```python
 # CODE 3.4
 # Generate Contingency Tables for the Mammographic Dataset
@@ -288,7 +313,7 @@ for i in var:
 
 ![Contingency Table](./Data/Code3_4_Output.png)
 
-### Prompt — Contingency Tables for the Mammographic Mass Dataset
+### Reversed Prompt — Contingency Tables for the Mammographic Mass Dataset
 ```
 You are a data analysis assistant supporting an **Advanced Exploratory Data Analysis (AEDA)** course.
 
@@ -340,6 +365,13 @@ $\bar{x}_w = \frac{\sum_{i=1}^{n} w_i x_i}{\sum_{i=1}^{n} w_i}$
 
 The code snippet below contains the script to calculate the mean, median, and midpoint of numeric variables ‘FFMC’ and ‘temp’, and the mode of the nominal variables ‘month’ and ‘day’ of the Forest Fires dataset.
 
+### Simple Prompt
+```
+Using the **Forest Fires dataset** from the UCI Machine Learning Repository in its original form, compute and report **central tendency measures** for the following variables: FFMC, temp, month, day.
+```
+
+### Python Code
+
 ```python
 # CODE 3.5
 # Calculating the mean and mode one by one using the Statistics library
@@ -370,9 +402,9 @@ print('Mode of nominal variable day: {v1}'
 
 ![Central Tendency Measures](./Data/Code3_5_Output.png)
 
-### Prompt — Central Tendency Measures for Numeric and Categorical Variables (Forest Fires Dataset)
+### Reversed Prompt — Central Tendency Measures for Numeric and Categorical Variables (Forest Fires Dataset)
 ```
-You are a data analysis assistant supporting an **Advanced Exploratory Data Analysis (AEDA)** course.
+You are a data analysis assistant supporting an **Exploratory Data Analysis (EDA)** course.
 
 Using the **Forest Fires dataset** from the UCI Machine Learning Repository in its original form, compute and report **central tendency measures** for selected numeric and categorical variables, following the exact logic described below.
 
@@ -454,6 +486,13 @@ $CV = \frac{s}{\bar{x}}$
 
 The code snippet below presents a script to calculate the variability measures and applies it to the ‘FFMC’ var-iable of the Forest Fires dataset.
 
+### Simple Prompt
+```
+Using the **Forest Fires dataset** from the UCI Machine Learning Repository in its original form, compute and report a set of **variability measures** for variable FFMC.
+```
+
+### Python Code
+
 ```python
 # CODE 3.9
 # Calculate the variability measures range (Eq. 3.9),
@@ -487,7 +526,7 @@ print(f"Variation coefficient of variable FFMC: {CV:.2f}")
 
 ![Variability Measures](./Data/Code3_9_Output.png)
 
-### Prompt — Variability Measures for a Numeric Variable (Forest Fires Dataset)
+### Reversed Prompt — Variability Measures for a Numeric Variable (Forest Fires Dataset)
 ```
 You are a data analysis assistant supporting an **Advanced Exploratory Data Analysis (AEDA)** course.
 
@@ -580,6 +619,13 @@ Shape measures help diagnose distribution behavior beyond central tendency and v
 
 The code snippet below was used to generate the data, calculate the central tendency measures and the **skewness** using the Fischer-Pearson and the First Skewness coefficients, and plot the results.
 
+### Simple Prompt
+```
+Generate two synthetic datasets of equal size: a **right-skewed distribution** and a **left-skewed distribution**. For **each distribution**, compute and display the mean, median, midpoint, and skewness.
+```
+
+### Python Code
+
 ```python
 # CODE 3.11 - Skewness and Skewed Distributions
 # Comparing right-skewed and left-skewed distributions
@@ -627,7 +673,7 @@ plt.show()
 
 ![Skewness](./Data/Code3_11_Output.png)
 
-### Prompt — Skewness and Skewed Distributions (Right-Skewed vs. Left-Skewed)
+### Reversed Prompt — Skewness and Skewed Distributions (Right-Skewed vs. Left-Skewed)
 ```
 You are a data analysis assistant supporting an **Advanced Exploratory Data Analysis (AEDA)** course.
 
@@ -676,6 +722,13 @@ Ensure that all computations and visualizations follow standard **descriptive st
 
 The code below describes how to generate data distributions to explore different levels of **kurtosis**.
 
+### Simple Prompt
+```
+Generate four synthetic datasets, each with **10,000 observations**, corresponding to different distribution types: Normal, Uniform, Paplace, Wigner.
+For each distribution compute the **kurtosis** and create a **2 × 2 grid of subplots**. In each subplot plot a **histogram** and overlay a kernel density estimate.
+```
+
+### Python Code 
 ```python
 # CODE 12
 # Kurtosis: mesokurtic, platykurtic and leptokurtic distributions
