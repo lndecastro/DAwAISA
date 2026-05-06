@@ -18,3 +18,6 @@ chapters:
     title: "Module 6: Special Types of Data"
   - file: Module7_Storytelling_Dashboards.md
     title: "Module 7: Data Storytelling and Dashboard Design"
+  - file: AppendixA_Datasets.md
+    title: "Appendix A: Datasets"
+    
