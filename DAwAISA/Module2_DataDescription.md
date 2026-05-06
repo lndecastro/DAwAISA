@@ -149,7 +149,7 @@ These datasets span different domains, data types, and analytical challenges.
 
 ## 2.5 Data Preparation
 
-### Introduction
+### 2.5.1 Introduction
 
 **Raw data** is data in its original form, collected directly from sources such as sensors, surveys, databases, or logs. Raw data is rarely suitable for immediate analysis.
 
@@ -161,7 +161,7 @@ Common problems include:
 
 Data preparation addresses these issues and ensures data quality and usability.
 
-### 2.5.1 Sampling
+### 2.5.2 Sampling
 
 Sampling reduces data volume while preserving representativeness.
 
@@ -174,7 +174,7 @@ Common sampling strategies include:
 
 Sampling is essential for scalability and efficient exploratory analysis.
 
-### 2.5.2 Missing Values
+### 2.5.3 Missing Values
 
 Missing data may result from sensor failures, human error, or integration issues.
 
@@ -188,9 +188,9 @@ Common strategies include:
 
 The choice of strategy depends on data type, context, and analytical goals.
 
-### 2.5.3 Normalization
+### 2.5.4 Normalization (Feature Scaling)
 
-Normalization transforms numerical variables to a common scale.
+Normalization (feature scaling) transforms numerical variables to a common scale.
 
 Common techniques include:
 - *Min–max normalization*: Rescales values to a fixed interval, typically [0,1], by linearly transforming them based on their minimum and maximum. <p>
@@ -206,6 +206,80 @@ $x_i' = \frac{x_i}{\max(x)}, \quad i = 1, \ldots, N$ <p>
 where $x_i$ is the original value, $x_i'$ is the scaled value, and $\max(x)$ is the maximum observed value of the variable.
 
 Normalization improves interpretability, visualization, and the performance of distance-based and learning-based methods.
+
+## 3. Hands-on Activities and Simple Prompts
+
+### 3.1 Data Dictionary and Sampling with AI
+
+- For the mammographic dataset, prompt:
+
+Version 1:
+```
+Generate a data dictionary including the variable name, its definition (meaning), the type of variable (numeric or nominal), and the number of missing values per variable.
+```
+Version 2:
+```
+Act as a data analyst. For a data dictionary containing the variable name, its definition (meaning), the type of variable (numeric or nominal), and the number of missing values per variable, create a data dictionary for the mammographic dataset.
+```
+
+Version 1:
+```
+Using a stratified sampling approach, sample 20% of the dataset. Assume variable ‘severity’ as the target variable.
+```
+Version 2:
+```
+Act as a data scientist. Using a stratified-sampling approach (by ‘severity’), sample 20% of the dataset so that each severity class is proportionally represented. Return the resulting subset as a new table.
+```
+
+Version 1:
+```
+Using a stratified sampling approach, sample 20% of the dataset. Assume variable ‘shape’ as the target variable.
+```
+Version 2:
+```
+Act as a data scientist. Using a stratified-sampling approach (by ‘Shape’), sample 20% of the dataset so that each Shape category is proportionally represented. Return the resulting subset as a new table.
+```
+- Analyze the results.
+
+### 3.2 Finding and Imputing Missing Values with AI
+
+- Open the mammographic_masses_nominal dataset using Excel.
+- Observe the missing values represented with ‘?’.
+- Apply filters in all variables to observe the missing values.
+- Prompt the tools to find missing values:
+
+Version 1:
+```
+Find the missing values of the mammographic data (they are represented by the question mark)
+```
+Version 2:
+```
+Act as a data analyst. In the mammographic dataset, identify all missing entries (marked ?). Report, for each column, the number and percentage of missing values.
+```
+- Prompt the tools to replace (imputate) missing values:
+
+Version 1:
+```
+Impute these missing values by a central tendency measure of the variable and save the dataset with the name mammographic_data_wo_missing_values.
+```
+Version 2:
+```
+Act as a data engineer. For each column in the mammographic dataset with missing values (marked ?), impute by an appropriate central tendency measure of the variable. Save the cleaned dataset as a csv with the name mammographic_data_wo_missing_values and confirm the imputation counts per column.
+```
+
+### 3.3 Data Normalization with AI
+
+- For the Iris dataset of Fisher, prompt the tools to:
+
+Version 1:
+```
+Normalize the iris dataset attached using a min-max method and the z-score
+```
+Version 2:
+```
+Act as a data scientist. Create two normalized versions of the Iris dataset: one with Min–Max scaling and one with Z-score standardization. Return both datasets as csvs and summarize the transformed ranges.
+```
+- Analyze the results.
 
 ## Reflection
 
