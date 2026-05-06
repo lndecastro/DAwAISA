@@ -20,4 +20,7 @@ chapters:
     title: "Module 7: Data Storytelling and Dashboard Design"
   - file: AppendixA_Datasets.md
     title: "Appendix A: Datasets"
+  - file: AppendixB_PythonCodeReversePrompt.md
+    title: "Appendix B: Python Code and Reverse Prompt"
+    
     
