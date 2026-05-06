@@ -149,8 +149,6 @@ These datasets span different domains, data types, and analytical challenges.
 
 ## 2.5 Data Preparation
 
-### 2.5.1 Introduction
-
 **Raw data** is data in its original form, collected directly from sources such as sensors, surveys, databases, or logs. Raw data is rarely suitable for immediate analysis.
 
 Common problems include:
@@ -161,7 +159,7 @@ Common problems include:
 
 Data preparation addresses these issues and ensures data quality and usability.
 
-### 2.5.2 Sampling
+### 2.5.1 Sampling
 
 Sampling reduces data volume while preserving representativeness.
 
@@ -174,7 +172,7 @@ Common sampling strategies include:
 
 Sampling is essential for scalability and efficient exploratory analysis.
 
-### 2.5.3 Missing Values
+### 2.5.2 Missing Values
 
 Missing data may result from sensor failures, human error, or integration issues.
 
@@ -188,7 +186,7 @@ Common strategies include:
 
 The choice of strategy depends on data type, context, and analytical goals.
 
-### 2.5.4 Normalization (Feature Scaling)
+### 2.5.3 Normalization (Feature Scaling)
 
 Normalization (feature scaling) transforms numerical variables to a common scale.
 
