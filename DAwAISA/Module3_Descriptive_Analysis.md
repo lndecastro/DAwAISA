@@ -14,7 +14,7 @@ By the end of this module, students will be able to:
 4. Understand and apply the normal distribution.
 5. Quantify associations between variables.
 6. Build and interpret simple linear regression models.
-7. Use computational tools (e.g., Pandas) to summarize datasets.
+7. Use computational tools to summarize datasets.
 
 ## 3.1 Distributions
 
@@ -461,8 +461,6 @@ For example:
 | Mode             | No                      | Some values      | Not always or multiple  | Categorical data; when the most frequent value is of interest               |
 | Midpoint         | High                    | Extreme values   | Always                  | When the middle point of the range is desired                                |
 | Weighted Mean    | High                    | All values       | Always                  | When different values have different importance in the average              |
-| Geometric Mean   | Low                     | All values       | Always                  | Skewed distributions; extreme values; average rates of change or growth over time (percentages or ratios) |
-| Harmonic Mean    | Low                     | All values       | Always                  | Extreme values present; averaging rates, ratios, or proportions              |
 | Trimmed Mean     | No                      | Some values      | Always                  | Extreme values present; skewed distributions                                 |
 
 ### 3.2.3 Variability Measures
