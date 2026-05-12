@@ -47,15 +47,13 @@ Tabular data structures are the foundation of spreadsheets, relational databases
 
 Mathematically, a dataset can be represented as a matrix:
 
-$\mathbf{S} = {x_i \mid i = 1, \ldots, N},$
+$\mathbf{X} = {\mathbf{x_i} \mid i = 1, \ldots, N},$
 
 where each object \mathbf{$x_i$} is an $m$-dimensional vector given by
 
 $\mathbf{x^i} = \big[ x_j^i \big]_{j = 1, \ldots, m}$
 
-where:
-- $N$ is the number of objects
-- $m$ is the number of variables
+where $N$ is the number of objects and $m$ is the number of variables.
 
 This representation supports statistical analysis, linear algebra operations, optimization, and machine learning algorithms.
 
@@ -164,11 +162,11 @@ Data preparation addresses these issues and ensures data quality and usability.
 Sampling reduces data volume while preserving representativeness.
 
 Common sampling strategies include:
-- *Random sampling with replacement*: Each object is selected randomly and may be chosen more than once, ensuring independence between selections.
-- *Random sampling without replacement*: Each object is selected randomly but can be chosen only once, preserving uniqueness within the sample.
-- *Systematic sampling*: Objects are selected at regular intervals from an ordered dataset after a random starting point.
-- *Group sampling*: Entire predefined groups of objects are selected instead of individual objects.
-- *Stratified sampling*: The dataset is divided into homogeneous subgroups (strata), and samples are drawn from each stratum to ensure representative coverage.
+- **Random sampling with replacement**: Each object is selected randomly and may be chosen more than once, ensuring independence between selections.
+- **Random sampling without replacement**: Each object is selected randomly but can be chosen only once, preserving uniqueness within the sample.
+- **Systematic sampling**: Objects are selected at regular intervals from an ordered dataset after a random starting point.
+- **Group sampling**: Entire predefined groups of objects are selected instead of individual objects.
+- **Stratified sampling**: The dataset is divided into homogeneous subgroups (strata), and samples are drawn from each stratum to ensure representative coverage.
 
 Sampling is essential for scalability and efficient exploratory analysis.
 
@@ -177,12 +175,12 @@ Sampling is essential for scalability and efficient exploratory analysis.
 Missing data may result from sensor failures, human error, or integration issues.
 
 Common strategies include:
-- *Removing affected objects*: Eliminates records with missing values, which simplifies analysis but may reduce sample size or introduce bias.
-- *Manual imputation*: Replaces missing values based on expert knowledge or external information.
-- *Global constant substitution*: Fills missing values with a fixed constant (e.g., zero or “unknown”) to preserve dataset size.
-- *Hot-deck imputation*: Replaces missing values with observed values from similar objects within the dataset.
-- *Central tendency imputation (mean, median, mode)*: Substitutes missing values using a typical value of the variable to maintain overall distribution.
-- *Class-conditional imputation*: Imputes missing values using statistics computed within the same class or group, preserving class-specific patterns.
+- **Removing affected objects**: Eliminates records with missing values, which simplifies analysis but may reduce sample size or introduce bias.
+- **Manual imputation**: Replaces missing values based on expert knowledge or external information.
+- **Global constant substitution**: Fills missing values with a fixed constant (e.g., zero or “unknown”) to preserve dataset size.
+- **Hot-deck imputation**: Replaces missing values with observed values from similar objects within the dataset.
+- **Central tendency imputation (mean, median, mode)**: Substitutes missing values using a typical value of the variable to maintain overall distribution.
+- **Class-conditional imputation**: Imputes missing values using statistics computed within the same class or group, preserving class-specific patterns.
 
 The choice of strategy depends on data type, context, and analytical goals.
 
@@ -213,11 +211,14 @@ Normalization improves interpretability, visualization, and the performance of d
 
 Version 1:
 ```
-Generate a data dictionary including the variable name, its definition (meaning), the type of variable (numeric or nominal), and the number of missing values per variable.
+Generate a data dictionary including the variable name, its definition (meaning), the type of variable (numeric or nominal),
+and the number of missing values per variable.
 ```
 Version 2:
 ```
-Act as a data analyst. For a data dictionary containing the variable name, its definition (meaning), the type of variable (numeric or nominal), and the number of missing values per variable, create a data dictionary for the mammographic dataset.
+Act as a data analyst. For a data dictionary containing the variable name, its definition (meaning),
+the type of variable (numeric or nominal), and the number of missing values per variable,
+create a data dictionary for the mammographic dataset.
 ```
 
 Version 1:
@@ -226,7 +227,8 @@ Using a stratified sampling approach, sample 20% of the dataset. Assume variable
 ```
 Version 2:
 ```
-Act as a data scientist. Using a stratified-sampling approach (by ‘severity’), sample 20% of the dataset so that each severity class is proportionally represented. Return the resulting subset as a new table.
+Act as a data scientist. Using a stratified-sampling approach (by ‘severity’), sample 20% of the dataset so that e
+ach severity class is proportionally represented. Return the resulting subset as a new table.
 ```
 
 Version 1:
@@ -235,7 +237,8 @@ Using a stratified sampling approach, sample 20% of the dataset. Assume variable
 ```
 Version 2:
 ```
-Act as a data scientist. Using a stratified-sampling approach (by ‘Shape’), sample 20% of the dataset so that each Shape category is proportionally represented. Return the resulting subset as a new table.
+Act as a data scientist. Using a stratified-sampling approach (by ‘Shape’), sample 20% of the dataset
+so that each Shape category is proportionally represented. Return the resulting subset as a new table.
 ```
 - Analyze the results.
 
@@ -252,17 +255,21 @@ Find the missing values of the mammographic data (they are represented by the qu
 ```
 Version 2:
 ```
-Act as a data analyst. In the mammographic dataset, identify all missing entries (marked ?). Report, for each column, the number and percentage of missing values.
+Act as a data analyst. In the mammographic dataset, identify all missing entries (marked ?).
+Report, for each column, the number and percentage of missing values.
 ```
 - Prompt the tools to replace (imputate) missing values:
 
 Version 1:
 ```
-Impute these missing values by a central tendency measure of the variable and save the dataset with the name mammographic_data_wo_missing_values.
+Impute these missing values by a central tendency measure of the variable
+and save the dataset with the name mammographic_data_wo_missing_values.
 ```
 Version 2:
 ```
-Act as a data engineer. For each column in the mammographic dataset with missing values (marked ?), impute by an appropriate central tendency measure of the variable. Save the cleaned dataset as a csv with the name mammographic_data_wo_missing_values and confirm the imputation counts per column.
+Act as a data engineer. For each column in the mammographic dataset with missing values (marked ?),
+impute by an appropriate central tendency measure of the variable.
+Save the cleaned dataset as a csv with the name mammographic_data_wo_missing_values and confirm the imputation counts per column.
 ```
 
 ### 3.3 Data Normalization with AI
@@ -275,7 +282,9 @@ Normalize the iris dataset attached using a min-max method and the z-score
 ```
 Version 2:
 ```
-Act as a data scientist. Create two normalized versions of the Iris dataset: one with Min–Max scaling and one with Z-score standardization. Return both datasets as csvs and summarize the transformed ranges.
+Act as a data scientist. Create two normalized versions of the Iris dataset:
+one with Min–Max scaling and one with Z-score standardization.
+Return both datasets as csvs and summarize the transformed ranges.
 ```
 - Analyze the results.
 
