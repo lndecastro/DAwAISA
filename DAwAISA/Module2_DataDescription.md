@@ -47,9 +47,9 @@ Tabular data structures are the foundation of spreadsheets, relational databases
 
 Mathematically, a dataset can be represented as a matrix:
 
-$S = {x_i \mid i = 1, \ldots, N},$
+$\mathbf{S} = {x_i \mid i = 1, \ldots, N},$
 
-where each object $x_i$ is an $m$-dimensional vector given by
+where each object \mathbf{$x_i$} is an $m$-dimensional vector given by
 
 $\mathbf{x^i} = \big[ x_j^i \big]_{j = 1, \ldots, m}$
 
