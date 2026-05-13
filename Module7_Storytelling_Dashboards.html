@@ -1,0 +1,1240 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>7 — Data Storytelling and Dashboard Design &#8212; Advanced Exploratory Data Analysis</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Module7_Storytelling_Dashboards';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Datasets Summary" href="AppendixA_Datasets.html" />
+    <link rel="prev" title="6 — Special Types of Data" href="Module6_Special_Types_of_Data.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/dendritic_logo.png" class="logo__image only-light" alt="Advanced Exploratory Data Analysis - Home"/>
+    <img src="_static/dendritic_logo.png" class="logo__image only-dark pst-js-only" alt="Advanced Exploratory Data Analysis - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to Data Analysis with AI (DAwAI)
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Module1_Introduction_to_AEDA.html">Module 1: Introduction to AEDA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module2_DataDescription.html">Module 2: Data Description and Preparation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module3_Descriptive_Analysis.html">Module 3: Descriptive Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module4_Principles_of_Visualization.html">Module 4: Principles of Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module5_Visualization_Methods.html">Module 5: Data Visualization Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module6_Special_Types_of_Data.html">Module 6: Special Types of Data</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Module 7: Data Storytelling and Dashboard Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AppendixA_Datasets.html">Appendix A: Datasets</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/lndecastro/AEDA" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/lndecastro/AEDA/edit/master/docs/Module7_Storytelling_Dashboards.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Module7_Storytelling_Dashboards.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>7 — Data Storytelling and Dashboard Design</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-storytelling">7.1 Data Storytelling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-the-audience-and-purpose">7.1.1 Define the Audience and Purpose</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identify-the-key-message-and-depth">7.1.2 Identify the Key Message and Depth</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-the-exploratory-data-analysis">7.1.3 Perform the Exploratory Data Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-a-compelling-narrative">7.1.4 Prepare a Compelling Narrative</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prompt-exercise-building-a-data-story-with-an-llm">7.2 Prompt Exercise: Building a Data Story with an LLM</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#background-the-superstore-dataset">Background: The Superstore Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-step-by-step-prompt-sequence">Part 1 — Step-by-Step Prompt Sequence</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-audience-and-purpose">Step 1 · Audience and Purpose</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-key-message-and-depth">Step 2 · Key Message and Depth</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-exploratory-analysis-plan">Step 3 · Exploratory Analysis Plan</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-compelling-narrative">Step 4 · Compelling Narrative</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-critical-reflection">Part 2 — Critical Reflection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#submission-requirements">Submission Requirements</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dashboard-design">7.3 Dashboard Design</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-appropriate-visualizations">7.3.1 Selecting Appropriate Visualizations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#designing-the-dashboard-layout">7.3.2 Designing the Dashboard Layout</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-a-color-scheme">7.3.3 Choosing a Color Scheme</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-interactivity">7.3.4 Applying Interactivity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#security-and-access-control">7.3.5 Security and Access Control</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-and-iterate">7.3.6 Test and Iterate</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prompt-exercise-designing-a-dashboard-with-an-llm">7.4 Prompt Exercise: Designing a Dashboard with an LLM</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Background: The Superstore Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Part 1 — Step-by-Step Prompt Sequence</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-select-appropriate-visualizations">Step 1 · Select Appropriate Visualizations</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-design-the-dashboard-layout">Step 2 · Design the Dashboard Layout</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-choose-a-color-scheme">Step 3 · Choose a Color Scheme</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-apply-interactivity">Step 4 · Apply Interactivity</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-security-and-access-control">Step 5 · Security and Access Control</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-test-and-iterate">Step 6 · Test and Iterate</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Part 2 — Critical Reflection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Submission Requirements</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-superstore-sales-dataset">7.5 Case Study: Superstore Sales Dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">7.5.1 Data Storytelling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">7.5.2 Dashboard Design</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting-the-superstore-sales-interactive-dashboard">7.6 Prompting the Superstore Sales Interactive Dashboard</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prompt-1-minimal-instructions">Prompt 1: Minimal Instructions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prompt-2-pre-defining-the-dashboard-components">Prompt 2: Pre-defining the Dashboard Components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prompt-3-full-specification">Prompt 3: Full Specification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">Reflection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">Further Reading</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="data-storytelling-and-dashboard-design">
+<h1>7 — Data Storytelling and Dashboard Design<a class="headerlink" href="#data-storytelling-and-dashboard-design" title="Link to this heading">#</a></h1>
+<p>This module integrates <strong>exploratory data analysis, visualization principles, and communication</strong> to transform analytical results into meaningful insights for decision-making. Data storytelling focuses on crafting a coherent narrative grounded in evidence, while dashboard design emphasizes interactive, visual summaries that support monitoring, exploration, and action.</p>
+<p>Together, these components represent the culmination of Exploratory Data Analysis (EDA): moving from data understanding to <strong>insight communication and decision support</strong>.</p>
+<section id="learning-objectives">
+<h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
+<p>By the end of this module, students will be able to:</p>
+<ol class="arabic simple">
+<li><p>Define audience, purpose, and context for data-driven communication.</p></li>
+<li><p>Identify key analytical messages and appropriate levels of detail.</p></li>
+<li><p>Structure data stories that combine narrative, evidence, and visualization.</p></li>
+<li><p>Design dashboards that align visual encodings, layout, and interaction with analytical goals.</p></li>
+<li><p>Apply best practices for usability, accessibility, and security in dashboards.</p></li>
+<li><p>Develop an end-to-end data storytelling and dashboard solution using a real dataset.</p></li>
+</ol>
+</section>
+<section id="data-storytelling">
+<h2>7.1 Data Storytelling<a class="headerlink" href="#data-storytelling" title="Link to this heading">#</a></h2>
+<p><strong>Data storytelling</strong> is the practice of communicating insights derived from data through a structured narrative supported by appropriate visualizations. It combines three core elements:</p>
+<ul class="simple">
+<li><p><strong>Data</strong>: reliable, well-analyzed evidence.</p></li>
+<li><p><strong>Narrative</strong>: a logical structure that guides interpretation.</p></li>
+<li><p><strong>Visualization</strong>: visual encodings that reduce cognitive load and emphasize meaning.</p></li>
+</ul>
+<p>Effective data storytelling does not aim to show <em>everything</em> in the data, but rather to highlight what matters for a given audience and purpose.</p>
+<p><img alt="Data Storytelling" src="_images/DStorytelling.png" /><p>
+<strong>Figure:</strong> Relationship among data, narrative and visuals for the storytelling design process.</p>
+<section id="define-the-audience-and-purpose">
+<h3>7.1.1 Define the Audience and Purpose<a class="headerlink" href="#define-the-audience-and-purpose" title="Link to this heading">#</a></h3>
+<p>The first step in data storytelling is to clearly define:</p>
+<ul class="simple">
+<li><p><strong>Audience</strong>: executives, managers, analysts, domain experts, or the general public.</p></li>
+<li><p><strong>Purpose</strong>: inform, explain, persuade, monitor, or support decision-making.</p></li>
+</ul>
+<p>Audience characteristics determine:</p>
+<ul class="simple">
+<li><p>Level of technical detail</p></li>
+<li><p>Choice of metrics and visualizations</p></li>
+<li><p>Language, tone, and framing</p></li>
+</ul>
+<p>A visualization that works for analysts may overwhelm decision-makers; conversely, oversimplification can obscure critical nuance for technical audiences.</p>
+<p><img alt="Data Storytelling Process Flow" src="_images/DSProcessFlow.png" /> <p>
+<strong>Figure:</strong> Data storytelling process flow.</p>
+</section>
+<section id="identify-the-key-message-and-depth">
+<h3>7.1.2 Identify the Key Message and Depth<a class="headerlink" href="#identify-the-key-message-and-depth" title="Link to this heading">#</a></h3>
+<p>A data story should revolve around a <strong>small number of key messages</strong> derived from exploratory analysis.</p>
+<p>Key questions include:</p>
+<ul class="simple">
+<li><p>What is the most important insight?</p></li>
+<li><p>What evidence supports it?</p></li>
+<li><p>How much detail is necessary for this audience?</p></li>
+</ul>
+<p>Depth should be adjusted by layering information:</p>
+<ul class="simple">
+<li><p>High-level summary for quick understanding</p></li>
+<li><p>Supporting views for deeper exploration</p></li>
+<li><p>Access to raw or detailed data when needed</p></li>
+</ul>
+</section>
+<section id="perform-the-exploratory-data-analysis">
+<h3>7.1.3 Perform the Exploratory Data Analysis<a class="headerlink" href="#perform-the-exploratory-data-analysis" title="Link to this heading">#</a></h3>
+<p>Robust data storytelling is grounded in <strong>rigorous exploratory data analysis</strong>. Prior to narrative construction, the analyst should:</p>
+<ul class="simple">
+<li><p>Understand distributions, variability, and outliers</p></li>
+<li><p>Identify associations and trends</p></li>
+<li><p>Detect anomalies or unexpected patterns</p></li>
+<li><p>Validate data quality and assumptions</p></li>
+</ul>
+<p>EDA ensures that the story is <strong>evidence-based</strong>, not anecdotal, and helps prevent misleading conclusions.</p>
+</section>
+<section id="prepare-a-compelling-narrative">
+<h3>7.1.4 Prepare a Compelling Narrative<a class="headerlink" href="#prepare-a-compelling-narrative" title="Link to this heading">#</a></h3>
+<p>A compelling data narrative typically follows a logical structure, such as:</p>
+<ol class="arabic simple">
+<li><p><strong>Context</strong>: why the problem matters</p></li>
+<li><p><strong>Question</strong>: what is being investigated</p></li>
+<li><p><strong>Evidence</strong>: key findings supported by data and visuals</p></li>
+<li><p><strong>Insight</strong>: interpretation of results</p></li>
+<li><p><strong>Implications</strong>: recommended actions or decisions</p></li>
+</ol>
+<p>Narratives should be concise, focused, and aligned with the analytical goal. Visualizations should be integrated naturally into the story, reinforcing—rather than distracting from—the message.</p>
+<p>The table below brings together the four core principles of storytelling design: defining the audience and purpose, identifying the central message and appropriate level of detail, conducting the exploratory data analysis, and crafting a compelling narrative. Once these elements are established, the analyst is prepared to proceed with the planning and design of the dashboard.</p>
+<p><strong>Table:</strong> Matrix with the four storytelling design principles.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Audience and Purpose</strong></p></th>
+<th class="head"><p><strong>Exploratory Analysis</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>• Specific group or individuals: demographics, interests, and knowledge level.<br>• Clarify the objectives through the narrative.</p></td>
+<td><p>• What questions do you want to answer with the data?<br>• What kind of relationships exist in the data?<br>• What are the best techniques for displaying the variables and their relationships?</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Key Message and Depth</strong></p></td>
+<td><p><strong>Compelling Narrative</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>• Central theme or insight: clear, concise, and relevant.<br>• Depth: level of detail, context, and supporting data.</p></td>
+<td><p>• Persuasive and impactful presentation.<br>• Guide the audience through the insights and information.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="prompt-exercise-building-a-data-story-with-an-llm">
+<h2>7.2 Prompt Exercise: Building a Data Story with an LLM<a class="headerlink" href="#prompt-exercise-building-a-data-story-with-an-llm" title="Link to this heading">#</a></h2>
+<p>In this exercise, you will use a Large Language Model (LLM) as a collaborative assistant to construct a complete data story for the <strong>Superstore Sales dataset</strong>, following the four-step storytelling design process introduced in this module. You will write, refine, and evaluate a sequence of prompts, one per storytelling step, and critically assess the quality of the LLM’s responses.</p>
+<p>The goal is not simply to get the LLM to produce output, but to learn how <strong>prompt design choices</strong> shape the depth, structure, and usefulness of that output.</p>
+<section id="background-the-superstore-dataset">
+<h3>Background: The Superstore Dataset<a class="headerlink" href="#background-the-superstore-dataset" title="Link to this heading">#</a></h3>
+<p>The Superstore Sales dataset contains retail transaction records across the United States. Its 18 variables cover order logistics, customer segments, product categories and sub-categories, geographic attributes (city, state, region), and sales figures. Use this context in all your prompts — you do not need to upload the actual data file unless your LLM interface supports it.</p>
+</section>
+<section id="part-1-step-by-step-prompt-sequence">
+<h3>Part 1 — Step-by-Step Prompt Sequence<a class="headerlink" href="#part-1-step-by-step-prompt-sequence" title="Link to this heading">#</a></h3>
+<p>Work through each step in order. For each step, you will: <strong>(a)</strong> write your initial prompt, <strong>(b)</strong> record the LLM’s response (summarized or quoted briefly), and <strong>(c)</strong> write a refined follow-up prompt if the first response was incomplete or misaligned.</p>
+<section id="step-1-audience-and-purpose">
+<h4>Step 1 · Audience and Purpose<a class="headerlink" href="#step-1-audience-and-purpose" title="Link to this heading">#</a></h4>
+<p><strong>Your task:</strong> Prompt the LLM to define a specific audience and a clear analytical purpose for a data story about Superstore Sales.</p>
+<p><strong>Starter prompt to adapt and improve:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="n">am</span> <span class="n">building</span> <span class="n">a</span> <span class="n">data</span> <span class="n">story</span> <span class="n">using</span> <span class="n">the</span> <span class="n">Superstore</span> <span class="n">Sales</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">which</span> <span class="n">contains</span> <span class="mi">18</span> <span class="n">variables</span> <span class="n">covering</span> <span class="n">orders</span><span class="p">,</span> <span class="n">customers</span><span class="p">,</span> <span class="n">products</span><span class="p">,</span> <span class="n">geography</span><span class="p">,</span> <span class="ow">and</span> <span class="n">sales</span> <span class="n">values</span> <span class="n">across</span> <span class="n">the</span> <span class="n">United</span> <span class="n">States</span><span class="o">.</span> <span class="n">Help</span> <span class="n">me</span> <span class="n">define</span> <span class="n">an</span> <span class="n">appropriate</span> <span class="n">audience</span> <span class="ow">and</span> <span class="n">purpose</span> <span class="k">for</span> <span class="n">this</span> <span class="n">story</span><span class="o">.</span> <span class="n">Be</span> <span class="n">specific</span> <span class="n">about</span> <span class="n">who</span> <span class="n">the</span> <span class="n">audience</span> <span class="ow">is</span><span class="p">,</span> <span class="n">what</span> <span class="n">decisions</span> <span class="n">they</span> <span class="n">need</span> <span class="n">to</span> <span class="n">make</span><span class="p">,</span> <span class="ow">and</span> <span class="n">what</span> <span class="n">level</span> <span class="n">of</span> <span class="n">technical</span> <span class="n">detail</span> <span class="ow">is</span> <span class="n">appropriate</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>Guidance questions to help you refine your prompt:</strong></p>
+<ul class="simple">
+<li><p>Did the LLM produce a single, specific audience, or a vague generic one (e.g., “business stakeholders”)?</p></li>
+<li><p>Did it connect the audience’s role to the specific variables available in the dataset?</p></li>
+<li><p>If the output was too generic, add a constraint, for example, specify the audience role (sales manager, regional director, executive) or the decision context (quarterly review, product strategy meeting).</p></li>
+</ul>
+<p><strong>Deliverable:</strong> Save your best prompt and the LLM’s response. Write 2–3 sentences evaluating how well the output aligns with the audience-and-purpose principle from the module.</p>
+</section>
+<section id="step-2-key-message-and-depth">
+<h4>Step 2 · Key Message and Depth<a class="headerlink" href="#step-2-key-message-and-depth" title="Link to this heading">#</a></h4>
+<p><strong>Your task:</strong> Prompt the LLM to identify one central insight and determine the appropriate level of analytical depth for the audience defined in Step 1.</p>
+<p><strong>Starter prompt to adapt and improve:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Based on the audience and purpose we defined, identify the single most important message that a data story about Superstore Sales should communicate. Then describe the appropriate level of depth: what high-level summary should be shown first, what supporting evidence is needed, and what detail can be omitted or placed in a secondary view?
+</pre></div>
+</div>
+<p><strong>Guidance questions to help you refine your prompt:</strong></p>
+<ul class="simple">
+<li><p>Did the LLM commit to one central message, or produce a list of several equally weighted ones?</p></li>
+<li><p>Did it connect depth decisions to the audience (e.g., executives need high-level KPIs; analysts need breakdowns)?</p></li>
+<li><p>Try prompting the LLM to justify each depth decision with a reason tied to the audience’s goals.</p></li>
+</ul>
+<p><strong>Deliverable:</strong> Save your best prompt and the LLM’s response. Write 2–3 sentences evaluating whether the key message is focused and whether the depth layering is appropriate for the audience.</p>
+</section>
+<section id="step-3-exploratory-analysis-plan">
+<h4>Step 3 · Exploratory Analysis Plan<a class="headerlink" href="#step-3-exploratory-analysis-plan" title="Link to this heading">#</a></h4>
+<p><strong>Your task:</strong> Prompt the LLM to outline the exploratory analysis questions and variable relationships that would provide the evidence needed to support the key message.</p>
+<p><strong>Starter prompt to adapt and improve:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Now</span> <span class="n">outline</span> <span class="n">the</span> <span class="n">exploratory</span> <span class="n">data</span> <span class="n">analysis</span> <span class="n">that</span> <span class="n">should</span> <span class="n">be</span> <span class="n">performed</span> <span class="n">on</span> <span class="n">the</span> <span class="n">Superstore</span> <span class="n">dataset</span> <span class="n">to</span> <span class="n">support</span> <span class="n">the</span> <span class="n">key</span> <span class="n">message</span> <span class="n">identified</span><span class="o">.</span> <span class="n">For</span> <span class="n">each</span> <span class="n">analysis</span> <span class="n">question</span><span class="p">,</span> <span class="n">specify</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="n">which</span> <span class="n">variables</span> <span class="n">are</span> <span class="n">involved</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="n">what</span> <span class="nb">type</span> <span class="n">of</span> <span class="n">relationship</span> <span class="ow">or</span> <span class="n">pattern</span> <span class="n">to</span> <span class="n">look</span> <span class="k">for</span><span class="p">,</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="n">which</span> <span class="n">visualization</span> <span class="nb">type</span> <span class="n">would</span> <span class="n">best</span> <span class="n">display</span> <span class="n">the</span> <span class="n">result</span><span class="o">.</span> <span class="n">Organize</span> <span class="n">your</span> <span class="n">response</span> <span class="n">around</span> <span class="n">the</span> <span class="n">four</span> <span class="n">EDA</span> <span class="n">goals</span> <span class="kn">from</span><span class="w"> </span><span class="nn">the</span> <span class="n">module</span><span class="p">:</span> <span class="n">distributions</span><span class="p">,</span> <span class="n">associations</span><span class="p">,</span> <span class="n">trends</span><span class="p">,</span> <span class="ow">and</span> <span class="n">anomalies</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>Guidance questions to help you refine your prompt:</strong></p>
+<ul class="simple">
+<li><p>Did the LLM stay grounded in the actual Superstore variables (e.g., Sales, Category, Region, Order Date), or did it invent variables not in the dataset?</p></li>
+<li><p>Did it suggest visualization types that are appropriate for the variable types involved (e.g., time series for Order Date vs. Sales, bar chart for Category vs. Sales)?</p></li>
+<li><p>If the LLM hallucinated variables, add an explicit list of available variables to your prompt.</p></li>
+</ul>
+<p><strong>Deliverable:</strong> Save your best prompt and the LLM’s response. Identify one EDA suggestion you find well-grounded and one that you would revise or reject, explaining why.</p>
+</section>
+<section id="step-4-compelling-narrative">
+<h4>Step 4 · Compelling Narrative<a class="headerlink" href="#step-4-compelling-narrative" title="Link to this heading">#</a></h4>
+<p><strong>Your task:</strong> Prompt the LLM to write a complete data narrative following the five-part structure from the module: Context → Question → Evidence → Insight → Implications.</p>
+<p><strong>Starter prompt to adapt and improve:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Using the audience, key message, and exploratory analysis plan we have developed, write a data story narrative for the Superstore Sales dataset. Structure the narrative in five parts: (1) Context — why this analysis matters, (2) Question — what is being investigated, (3) Evidence — key findings with specific variable references, (4) Insight — what the evidence means, and (5) Implications — what actions or decisions should follow. Write for the audience we defined. Keep the narrative concise and avoid technical jargon.
+</pre></div>
+</div>
+<p><strong>Guidance questions to help you refine your prompt:</strong></p>
+<ul class="simple">
+<li><p>Is the narrative logically sequenced, or does it jump between sections?</p></li>
+<li><p>Does the Evidence section reference specific patterns (e.g., particular categories, regions, or time periods) rather than vague generalizations?</p></li>
+<li><p>Is the tone and vocabulary appropriate for the defined audience?</p></li>
+<li><p>Try asking the LLM to revise a specific section that felt weak and observe how the output changes.</p></li>
+</ul>
+<p><strong>Deliverable:</strong> Save your best prompt and the LLM’s final narrative. Annotate each of the five narrative sections directly in your submission (label them C, Q, E, I, Im).</p>
+</section>
+</section>
+<section id="part-2-critical-reflection">
+<h3>Part 2 — Critical Reflection<a class="headerlink" href="#part-2-critical-reflection" title="Link to this heading">#</a></h3>
+<p>Answer the following questions individually, in your own words. Each response should be 3–5 sentences.</p>
+<ol class="arabic simple">
+<li><p><strong>Prompt precision:</strong> How did your prompts change from your first attempt to your refined version in each step? What specific changes led to better outputs?</p></li>
+<li><p><strong>Hallucination and grounding:</strong> Did the LLM at any point introduce variables, statistics, or claims that are not present in or supported by the Superstore dataset? How did you detect and correct this?</p></li>
+<li><p><strong>Narrative quality:</strong> Compare the LLM’s narrative (Step 4) against the five-part structure. Which section was strongest and which was weakest? What does this suggest about how LLMs handle storytelling versus analysis?</p></li>
+<li><p><strong>Human vs. LLM roles:</strong> Based on this exercise, which parts of the data storytelling process benefit most from LLM assistance, and which parts still require human judgment? Justify your answer using specific examples from your session.</p></li>
+<li><p><strong>Ethical consideration:</strong> If this LLM-generated story were presented to real decision-makers without disclosure that it was AI-assisted, what risks could arise? How does this connect to the module’s discussion of evidence-based storytelling?</p></li>
+</ol>
+</section>
+<section id="submission-requirements">
+<h3>Submission Requirements<a class="headerlink" href="#submission-requirements" title="Link to this heading">#</a></h3>
+<p>Submit a single document containing:</p>
+<ul class="simple">
+<li><p>Your prompt-response record for all four steps (Parts 1a–1d), including your evaluation notes.</p></li>
+<li><p>Your Part 2 reflection responses.</p></li>
+<li><p>A one-paragraph <strong>Summary Assessment</strong>: overall, how effective was the LLM as a storytelling collaborator, and what would you do differently in a real project?</p></li>
+</ul>
+<p><strong>Format:</strong> Follow the course report template. Maximum length: 6 pages excluding cover page.</p>
+</section>
+</section>
+<section id="dashboard-design">
+<h2>7.3 Dashboard Design<a class="headerlink" href="#dashboard-design" title="Link to this heading">#</a></h2>
+<p>A <strong>dashboard</strong> is an interactive visual interface that consolidates key indicators, trends, and patterns into a single view. Dashboards are widely used for <strong>monitoring performance, supporting decisions, crafting stories, and enabling exploratory analysis</strong>.</p>
+<p>Unlike static reports, dashboards emphasize:</p>
+<ul class="simple">
+<li><p>Interactivity</p></li>
+<li><p>Real-time or near–real-time updates</p></li>
+<li><p>User-driven exploration</p></li>
+</ul>
+<p>The figure below summarizes the main steps  involved in the process of designing dashboards.</p>
+<p><img alt="Dashboard Design Process Flow" src="_images/DDProcessFlow.png" />
+<strong>Figure:</strong> Dashboard design process flow.</p>
+<section id="selecting-appropriate-visualizations">
+<h3>7.3.1 Selecting Appropriate Visualizations<a class="headerlink" href="#selecting-appropriate-visualizations" title="Link to this heading">#</a></h3>
+<p>Visualization choices in dashboards should follow the same principles discussed in earlier modules:</p>
+<ul class="simple">
+<li><p>Match visualization type to data type and analytical goal</p></li>
+<li><p>Prefer simple, familiar charts for frequent monitoring</p></li>
+<li><p>Avoid unnecessary decoration or chart variety</p></li>
+</ul>
+<p>Common dashboard elements include:</p>
+<ul class="simple">
+<li><p>KPIs and summary metrics</p></li>
+<li><p>Time series for trends</p></li>
+<li><p>Bar charts for comparisons</p></li>
+<li><p>Maps for spatial patterns</p></li>
+</ul>
+</section>
+<section id="designing-the-dashboard-layout">
+<h3>7.3.2 Designing the Dashboard Layout<a class="headerlink" href="#designing-the-dashboard-layout" title="Link to this heading">#</a></h3>
+<p>Layout strongly influences usability and comprehension. Effective layouts:</p>
+<ul class="simple">
+<li><p>Follow a clear visual hierarchy (most important elements first)</p></li>
+<li><p>Use consistent alignment and spacing</p></li>
+<li><p>Group related elements logically</p></li>
+<li><p>Minimize scrolling when possible</p></li>
+</ul>
+<p>A common strategy is a <strong>top-down layout</strong>, where high-level KPIs appear at the top and detailed views appear below.</p>
+</section>
+<section id="choosing-a-color-scheme">
+<h3>7.3.3 Choosing a Color Scheme<a class="headerlink" href="#choosing-a-color-scheme" title="Link to this heading">#</a></h3>
+<p>Color should be used intentionally and sparingly. Good practices include:</p>
+<ul class="simple">
+<li><p>Use color to encode meaning, not decoration</p></li>
+<li><p>Maintain consistency across views</p></li>
+<li><p>Ensure sufficient contrast for readability</p></li>
+<li><p>Consider color-blind–safe palettes</p></li>
+</ul>
+<p>Neutral colors are often preferable for backgrounds, while accent colors can highlight critical values, changes, or exceptions.</p>
+</section>
+<section id="applying-interactivity">
+<h3>7.3.4 Applying Interactivity<a class="headerlink" href="#applying-interactivity" title="Link to this heading">#</a></h3>
+<p>Interactivity allows users to explore data dynamically. Common interactive features include:</p>
+<ul class="simple">
+<li><p>Filters and slicers</p></li>
+<li><p>Drill-down and drill-through actions</p></li>
+<li><p>Tooltips with additional context</p></li>
+<li><p>Linked views (brushing and highlighting)</p></li>
+</ul>
+<p>Interactivity should enhance insight, not overwhelm the user. Each interactive element should have a clear purpose.</p>
+</section>
+<section id="security-and-access-control">
+<h3>7.3.5 Security and Access Control<a class="headerlink" href="#security-and-access-control" title="Link to this heading">#</a></h3>
+<p>Dashboards often expose sensitive or strategic information. Key considerations include:</p>
+<ul class="simple">
+<li><p>Role-based access control</p></li>
+<li><p>Data anonymization when appropriate</p></li>
+<li><p>Secure authentication and authorization</p></li>
+<li><p>Compliance with organizational and legal requirements</p></li>
+</ul>
+<p>Security should be addressed early in the design process, not as an afterthought.</p>
+</section>
+<section id="test-and-iterate">
+<h3>7.3.6 Test and Iterate<a class="headerlink" href="#test-and-iterate" title="Link to this heading">#</a></h3>
+<p>Dashboard design is inherently iterative. Testing should involve:</p>
+<ul class="simple">
+<li><p>Real users from the target audience</p></li>
+<li><p>Representative tasks and scenarios</p></li>
+<li><p>Feedback on clarity, usability, and usefulness</p></li>
+</ul>
+<p>Continuous iteration ensures that dashboards remain aligned with evolving data, goals, and user needs.</p>
+</section>
+</section>
+<section id="prompt-exercise-designing-a-dashboard-with-an-llm">
+<h2>7.4 Prompt Exercise: Designing a Dashboard with an LLM<a class="headerlink" href="#prompt-exercise-designing-a-dashboard-with-an-llm" title="Link to this heading">#</a></h2>
+<p>In this exercise, you will use a Large Language Model (LLM) as a collaborative design assistant to plan and specify a complete interactive dashboard for the <strong>Superstore Sales dataset</strong>, following the six-step dashboard design process introduced. You will write, refine, and evaluate a sequence of prompts, one per design step, and critically assess the quality and practical usefulness of the LLM’s outputs.</p>
+<p>The goal is not to have the LLM build a dashboard for you, but to use it to make <strong>informed, justified design decisions</strong> at every stage of the process, decisions you could hand to a developer or implement yourself in a BI tool such as Power BI, Tableau, or Python (Dash/Plotly).</p>
+<section id="id1">
+<h3>Background: The Superstore Dataset<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>The Superstore Sales dataset contains retail transaction records across the United States. Its 18 variables cover order logistics (Order Date, Ship Date, Ship Mode), customer attributes (Segment, Region, State), product classification (Category, Sub-Category, Product Name), and sales performance (Sales). Use this context in every prompt — the LLM should ground all design recommendations in the actual variables available.</p>
+</section>
+<section id="id2">
+<h3>Part 1 — Step-by-Step Prompt Sequence<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>Work through each step in order. For each step, you will: <strong>(a)</strong> write your initial prompt, <strong>(b)</strong> record the LLM’s response (summarized or quoted briefly), and <strong>(c)</strong> write a refined follow-up prompt if the first response was incomplete or misaligned with module principles.</p>
+<section id="step-1-select-appropriate-visualizations">
+<h4>Step 1 · Select Appropriate Visualizations<a class="headerlink" href="#step-1-select-appropriate-visualizations" title="Link to this heading">#</a></h4>
+<p><strong>Your task:</strong> Prompt the LLM to recommend a set of visualization types for the dashboard, matched to the analytical questions and variables of the Superstore dataset.</p>
+<p><strong>Starter prompt to adapt and improve:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="n">am</span> <span class="n">designing</span> <span class="n">a</span> <span class="n">dashboard</span> <span class="k">for</span> <span class="n">the</span> <span class="n">Superstore</span> <span class="n">Sales</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">which</span> <span class="n">has</span> <span class="mi">18</span> <span class="n">variables</span> <span class="n">including</span> <span class="n">Order</span> <span class="n">Date</span><span class="p">,</span> <span class="n">Ship</span> <span class="n">Date</span><span class="p">,</span> <span class="n">Ship</span> <span class="n">Mode</span><span class="p">,</span> <span class="n">Customer</span> <span class="n">Segment</span><span class="p">,</span> <span class="n">Region</span><span class="p">,</span> <span class="n">State</span><span class="p">,</span> <span class="n">Category</span><span class="p">,</span> <span class="n">Sub</span><span class="o">-</span><span class="n">Category</span><span class="p">,</span> <span class="n">Product</span> <span class="n">Name</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Sales</span><span class="o">.</span> <span class="n">The</span> <span class="n">intended</span> <span class="n">audience</span> <span class="ow">is</span> <span class="n">sales</span> <span class="n">managers</span> <span class="ow">and</span> <span class="n">business</span> <span class="n">analysts</span> <span class="n">who</span> <span class="n">need</span> <span class="n">to</span> <span class="n">monitor</span> <span class="n">sales</span> <span class="n">performance</span> <span class="ow">and</span> <span class="n">identify</span> <span class="n">trends</span><span class="o">.</span> <span class="n">Recommend</span> <span class="n">a</span> <span class="n">specific</span> <span class="nb">set</span> <span class="n">of</span> <span class="n">visualizations</span> <span class="k">for</span> <span class="n">the</span> <span class="n">dashboard</span><span class="o">.</span> <span class="n">For</span> <span class="n">each</span> <span class="n">one</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="n">the</span> <span class="n">chart</span> <span class="nb">type</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="n">the</span> <span class="n">variables</span> <span class="n">it</span> <span class="n">displays</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="n">the</span> <span class="n">analytical</span> <span class="n">question</span> <span class="n">it</span> <span class="n">answers</span><span class="p">,</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="n">why</span> <span class="n">this</span> <span class="n">chart</span> <span class="nb">type</span> <span class="ow">is</span> <span class="n">appropriate</span> <span class="k">for</span> <span class="n">those</span> <span class="n">variables</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>Guidance questions to help you refine your prompt:</strong></p>
+<ul class="simple">
+<li><p>Did the LLM recommend chart types that are appropriate for the variable types involved (e.g., line chart for Sales over Order Date, bar chart for Sales by Category)?</p></li>
+<li><p>Did it include a KPI element for high-level summary metrics, as shown in the module’s case study?</p></li>
+<li><p>Did it avoid unnecessary or exotic chart types that would confuse the target audience?</p></li>
+<li><p>If any recommendation seems mismatched to the data type, push back by specifying the variable type (categorical, continuous, temporal) and ask for a revised recommendation.</p></li>
+</ul>
+<p><strong>Deliverable:</strong> Save your best prompt and the LLM’s response. Write 2–3 sentences evaluating whether the visualization choices are appropriate, grounded in the available variables, and aligned with the audience’s monitoring needs.</p>
+</section>
+<section id="step-2-design-the-dashboard-layout">
+<h4>Step 2 · Design the Dashboard Layout<a class="headerlink" href="#step-2-design-the-dashboard-layout" title="Link to this heading">#</a></h4>
+<p><strong>Your task:</strong> Prompt the LLM to produce a textual wireframe or layout specification that describes where each visualization will be positioned in the dashboard.</p>
+<p><strong>Starter prompt to adapt and improve:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Using the visualizations we selected, propose a layout for the dashboard. Describe where each element should be placed — top, left panel, center, bottom — and explain the reasoning behind each placement decision. The layout should follow a top-down visual hierarchy, placing the most important information first. Also describe how related elements should be grouped and how whitespace should be used to separate sections.
+</pre></div>
+</div>
+<p><strong>Guidance questions to help you refine your prompt:</strong></p>
+<ul class="simple">
+<li><p>Did the LLM place the KPI at the top of the dashboard, consistent with the top-down hierarchy principle from the module?</p></li>
+<li><p>Did it group related charts logically (e.g., time-series views together, geographic view near regional breakdowns)?</p></li>
+<li><p>Did it address element sizing — giving larger panels to more complex or important charts?</p></li>
+<li><p>If the layout felt cluttered or unstructured, ask the LLM to produce a grid-based description (e.g., “3-column, 2-row grid”) and assign each visualization to a cell.</p></li>
+</ul>
+<p><strong>Deliverable:</strong> Paste your best prompt and the LLM’s layout description. Sketch or describe the wireframe in your submission based on the LLM’s output, and annotate any placements you would change and why.</p>
+</section>
+<section id="step-3-choose-a-color-scheme">
+<h4>Step 3 · Choose a Color Scheme<a class="headerlink" href="#step-3-choose-a-color-scheme" title="Link to this heading">#</a></h4>
+<p><strong>Your task:</strong> Prompt the LLM to recommend a color scheme for the dashboard and justify each choice against the visualization principles from the module.</p>
+<p><strong>Starter prompt to adapt and improve:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Recommend</span> <span class="n">a</span> <span class="n">color</span> <span class="n">scheme</span> <span class="k">for</span> <span class="n">the</span> <span class="n">Superstore</span> <span class="n">Sales</span> <span class="n">dashboard</span><span class="o">.</span> <span class="n">Specify</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="n">a</span> <span class="n">primary</span> <span class="n">accent</span> <span class="n">color</span> <span class="k">for</span> <span class="n">key</span> <span class="n">metrics</span> <span class="ow">and</span> <span class="n">highlights</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="n">a</span> <span class="n">neutral</span> <span class="n">background</span> <span class="n">color</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="n">how</span> <span class="n">categorical</span> <span class="n">variables</span> <span class="n">such</span> <span class="k">as</span> <span class="n">Category</span> <span class="ow">or</span> <span class="n">Segment</span> <span class="n">should</span> <span class="n">be</span> <span class="n">encoded</span> <span class="k">with</span> <span class="n">color</span><span class="p">,</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="n">how</span> <span class="n">to</span> <span class="n">handle</span> <span class="n">positive</span> <span class="n">versus</span> <span class="n">negative</span> <span class="n">performance</span> <span class="n">indicators</span> <span class="k">if</span> <span class="n">applicable</span><span class="o">.</span> <span class="n">Justify</span> <span class="n">each</span> <span class="n">choice</span> <span class="n">using</span> <span class="n">principles</span> <span class="n">of</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">data</span> <span class="n">visualization</span><span class="p">:</span> <span class="n">contrast</span><span class="p">,</span> <span class="n">consistency</span><span class="p">,</span> <span class="n">meaning</span><span class="p">,</span> <span class="ow">and</span> <span class="n">accessibility</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>Guidance questions to help you refine your prompt:</strong></p>
+<ul class="simple">
+<li><p>Did the LLM justify its color choices with a principle (e.g., contrast for readability, consistency across views, semantic meaning)?</p></li>
+<li><p>Did it address color-blind safety? If not, ask it to revise the palette to be accessible to users with deuteranopia (the most common form of color blindness).</p></li>
+<li><p>Did it recommend a consistent number of colors — avoiding rainbow palettes that encode no meaning?</p></li>
+<li><p>Compare the LLM’s recommendation to the module’s case study, which used shades of green for positive connotation and contrast on a light background. Does the LLM’s palette follow similar reasoning?</p></li>
+</ul>
+<p><strong>Deliverable:</strong> Paste your best prompt and the LLM’s response. Write 2–3 sentences evaluating whether the color scheme is principled, consistent, and accessible.</p>
+</section>
+<section id="step-4-apply-interactivity">
+<h4>Step 4 · Apply Interactivity<a class="headerlink" href="#step-4-apply-interactivity" title="Link to this heading">#</a></h4>
+<p><strong>Your task:</strong> Prompt the LLM to specify the interactive features of the dashboard, including filters, slicers, tooltips, and any linked views.</p>
+<p><strong>Starter prompt to adapt and improve:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Specify</span> <span class="n">the</span> <span class="n">interactive</span> <span class="n">features</span> <span class="n">that</span> <span class="n">should</span> <span class="n">be</span> <span class="n">included</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">Superstore</span> <span class="n">Sales</span> <span class="n">dashboard</span><span class="o">.</span> <span class="n">For</span> <span class="n">each</span> <span class="n">interactive</span> <span class="n">element</span><span class="p">,</span> <span class="n">describe</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="n">the</span> <span class="nb">type</span> <span class="n">of</span> <span class="n">interaction</span> <span class="p">(</span><span class="nb">filter</span><span class="p">,</span> <span class="n">slicer</span><span class="p">,</span> <span class="n">tooltip</span><span class="p">,</span> <span class="n">drill</span><span class="o">-</span><span class="n">down</span><span class="p">,</span> <span class="n">linked</span> <span class="n">view</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="n">which</span> <span class="n">variables</span> <span class="ow">or</span> <span class="n">visualizations</span> <span class="n">it</span> <span class="n">affects</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="n">how</span> <span class="n">the</span> <span class="n">user</span> <span class="n">would</span> <span class="n">trigger</span> <span class="n">it</span><span class="p">,</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="n">what</span> <span class="n">analytical</span> <span class="n">benefit</span> <span class="n">it</span> <span class="n">provides</span> <span class="n">to</span> <span class="n">the</span> <span class="n">audience</span><span class="o">.</span> <span class="n">Prioritize</span> <span class="n">interactions</span> <span class="n">that</span> <span class="n">allow</span> <span class="n">the</span> <span class="n">user</span> <span class="n">to</span> <span class="nb">filter</span> <span class="n">by</span> <span class="n">time</span> <span class="n">period</span><span class="p">,</span> <span class="n">shipment</span> <span class="n">mode</span><span class="p">,</span> <span class="ow">and</span> <span class="n">customer</span> <span class="n">segment</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>Guidance questions to help you refine your prompt:</strong></p>
+<ul class="simple">
+<li><p>Did the LLM include slicers for Year, Ship Mode, and Segment — the three filter dimensions highlighted in the module’s case study?</p></li>
+<li><p>Did it include tooltips for each visualization, providing exact values on hover?</p></li>
+<li><p>Did it suggest any linked views (brushing and highlighting across charts), and if so, are those links analytically meaningful?</p></li>
+<li><p>If the LLM proposed too many interactive elements, ask it to rank them by priority and identify the minimum set needed for a first usable version.</p></li>
+</ul>
+<p><strong>Deliverable:</strong> Paste your best prompt and the LLM’s response. Identify the two most valuable interactions recommended and explain why they support the audience’s decision-making goals.</p>
+</section>
+<section id="step-5-security-and-access-control">
+<h4>Step 5 · Security and Access Control<a class="headerlink" href="#step-5-security-and-access-control" title="Link to this heading">#</a></h4>
+<p><strong>Your task:</strong> Prompt the LLM to outline the security and access considerations that would apply if this dashboard were deployed in a real organizational setting.</p>
+<p><strong>Starter prompt to adapt and improve:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>The Superstore Sales dashboard will be deployed internally within a retail organization and shared with sales managers, regional directors, and executive leadership. Outline the security and access control considerations for this deployment. Address: (1) role-based access control — which user roles should see which data, (2) any data that should be anonymized or restricted, (3) authentication requirements, and (4) compliance considerations relevant to internal business data.
+</pre></div>
+</div>
+<p><strong>Guidance questions to help you refine your prompt:</strong></p>
+<ul class="simple">
+<li><p>Did the LLM differentiate between user roles meaningfully (e.g., executives see aggregate views only; regional managers see only their own region’s data)?</p></li>
+<li><p>Did it address authentication (login, SSO) and not just authorization (who can see what)?</p></li>
+<li><p>Did it treat security as a design-phase concern rather than an afterthought, consistent with the module’s guidance?</p></li>
+<li><p>If the LLM gave only generic security advice, push it to apply each recommendation specifically to the Superstore dashboard structure you have designed.</p></li>
+</ul>
+<p><strong>Deliverable:</strong> Paste your best prompt and the LLM’s response. Write 2–3 sentences evaluating whether the security plan is specific, role-differentiated, and aligned with the module’s principle that security should be addressed early in design.</p>
+</section>
+<section id="step-6-test-and-iterate">
+<h4>Step 6 · Test and Iterate<a class="headerlink" href="#step-6-test-and-iterate" title="Link to this heading">#</a></h4>
+<p><strong>Your task:</strong> Prompt the LLM to design a user testing plan for the dashboard, specifying who should test it, what tasks they should perform, and what feedback to collect.</p>
+<p><strong>Starter prompt to adapt and improve:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Design</span> <span class="n">a</span> <span class="n">user</span> <span class="n">testing</span> <span class="n">plan</span> <span class="k">for</span> <span class="n">the</span> <span class="n">Superstore</span> <span class="n">Sales</span> <span class="n">dashboard</span> <span class="n">before</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">deployed</span><span class="o">.</span> <span class="n">Specify</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="n">who</span> <span class="n">the</span> <span class="n">test</span> <span class="n">participants</span> <span class="n">should</span> <span class="n">be</span> <span class="ow">and</span> <span class="n">why</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="n">three</span> <span class="n">representative</span> <span class="n">tasks</span> <span class="n">a</span> <span class="n">tester</span> <span class="n">would</span> <span class="n">perform</span> <span class="n">using</span> <span class="n">the</span> <span class="n">dashboard</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="n">the</span> <span class="n">questions</span> <span class="ow">or</span> <span class="n">criteria</span> <span class="n">used</span> <span class="n">to</span> <span class="n">evaluate</span> <span class="n">clarity</span><span class="p">,</span> <span class="n">usability</span><span class="p">,</span> <span class="ow">and</span> <span class="n">usefulness</span><span class="p">,</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="n">how</span> <span class="n">feedback</span> <span class="n">would</span> <span class="n">be</span> <span class="n">used</span> <span class="n">to</span> <span class="n">iterate</span> <span class="n">on</span> <span class="n">the</span> <span class="n">design</span><span class="o">.</span> <span class="n">Align</span> <span class="n">the</span> <span class="n">testing</span> <span class="n">plan</span> <span class="k">with</span> <span class="n">the</span> <span class="n">intended</span> <span class="n">audience</span> <span class="n">of</span> <span class="n">sales</span> <span class="n">managers</span> <span class="ow">and</span> <span class="n">business</span> <span class="n">analysts</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>Guidance questions to help you refine your prompt:</strong></p>
+<ul class="simple">
+<li><p>Did the LLM select test participants that match the actual intended audience, rather than generic “users”?</p></li>
+<li><p>Are the three tasks realistic and specific (e.g., “Find the total sales for the West region in 2017 using the map and slicer”) rather than vague (e.g., “Explore the dashboard”)?</p></li>
+<li><p>Did it suggest both usability criteria (can the user complete the task?) and usefulness criteria (did the dashboard answer their question?)?</p></li>
+<li><p>Did it describe what happens after testing — specifically how feedback translates into design changes?</p></li>
+</ul>
+<p><strong>Deliverable:</strong> Paste your best prompt and the LLM’s response. Write the three testing tasks in your own words and explain what aspect of the design each task is intended to validate.</p>
+</section>
+</section>
+<section id="id3">
+<h3>Part 2 — Critical Reflection<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>Answer the following questions individually, in your own words. Each response should be 3–5 sentences.</p>
+<ol class="arabic simple">
+<li><p><strong>Prompt precision:</strong> Across the six steps, which step required the most prompt refinement to get a useful response? What specific changes to the prompt made the biggest difference?</p></li>
+<li><p><strong>Design grounding:</strong> At any point, did the LLM recommend visualizations, colors, or interactions that were not appropriate for the Superstore dataset’s variables or the target audience? How did you identify and correct this?</p></li>
+<li><p><strong>Completeness vs. quality:</strong> Did the LLM tend to produce responses that were comprehensive but shallow, or focused and well-justified? How does this affect how you would use an LLM in a real dashboard design project?</p></li>
+<li><p><strong>Human vs. LLM roles:</strong> Which of the six design steps benefited most from LLM assistance, and which required the most human judgment to evaluate or override? Justify your answer with specific examples from your session.</p></li>
+<li><p><strong>Ethical and practical considerations:</strong> If a dashboard designed entirely through LLM prompts were deployed in a real business without human expert review, what risks could arise — in terms of design quality, security, or analytical accuracy? How should practitioners safeguard against these risks?</p></li>
+</ol>
+</section>
+<section id="id4">
+<h3>Submission Requirements<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>Submit a single document containing:</p>
+<ul class="simple">
+<li><p>Your prompt-response record for all six steps (Steps 1–6), including evaluation notes.</p></li>
+<li><p>Your Part 2 reflection responses.</p></li>
+<li><p>A one-paragraph <strong>Summary Assessment</strong>: overall, how effective was the LLM as a dashboard design collaborator, and at which stage would you rely on it most versus least in a real project?</p></li>
+</ul>
+<p><strong>Format:</strong> Follow the course report template. Maximum length: 8 pages excluding cover page.</p>
+</section>
+</section>
+<section id="case-study-superstore-sales-dataset">
+<h2>7.5 Case Study: Superstore Sales Dataset<a class="headerlink" href="#case-study-superstore-sales-dataset" title="Link to this heading">#</a></h2>
+<p>This case study integrates <strong>data storytelling and dashboard design</strong> using the Superstore Sales dataset, a widely used benchmark in business analytics.</p>
+<p>The dataset typically includes:</p>
+<ul class="simple">
+<li><p>Orders, customers, products, and categories</p></li>
+<li><p>Sales, profit, discounts, and quantities</p></li>
+<li><p>Temporal and geographic dimensions</p></li>
+</ul>
+<section id="id5">
+<h3>7.5.1 Data Storytelling<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>The storytelling process begins by defining the business questions, such as:</p>
+<ul class="simple">
+<li><p>How are sales and profits evolving over time?</p></li>
+<li><p>Which regions and categories drive performance?</p></li>
+<li><p>Where are losses occurring?</p></li>
+</ul>
+<p>Exploratory analysis is used to identify trends, patterns, and anomalies, which are then synthesized into a coherent narrative tailored to decision-makers.</p>
+</section>
+<section id="id6">
+<h3>7.5.2 Dashboard Design<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p>The dashboard design phase translates the story into an interactive interface, typically including:</p>
+<ul class="simple">
+<li><p>High-level KPIs (total sales, profit, margin)</p></li>
+<li><p>Time series views for trends</p></li>
+<li><p>Comparative views by region, category, and segment</p></li>
+<li><p>Filters for time, geography, and product attributes</p></li>
+</ul>
+<p>The final dashboard serves both as a <strong>communication artifact</strong> and a <strong>decision-support tool</strong>, allowing users to monitor performance and explore underlying drivers.</p>
+<p>To illustrate, the wireframe presented in the figure below describes the layout to be used to build the dashboard.</p>
+<p><img alt="Dashboard Wireframe" src="_images/Figure_7_5_Wireframe.jpg" /> <p>
+<strong>Figure:</strong> Wireframe with the dashboad layout for the Superstore Sales dataset.</p>
+<p>The figure below shows the final dashboard built using PowerBI by Microsoft.</p>
+<p><img alt="Final Dashboard" src="_images/Figure_7_6a_Dashboard.jpg" /> <p>
+<strong>Figure:</strong> Dashboad for the Superstore Sales dataset created with PowerBI by Microsoft.</p>
+</section>
+</section>
+<section id="prompting-the-superstore-sales-interactive-dashboard">
+<h2>7.6 Prompting the Superstore Sales Interactive Dashboard<a class="headerlink" href="#prompting-the-superstore-sales-interactive-dashboard" title="Link to this heading">#</a></h2>
+<p>Copy the prompt below in its entirety and paste it into your LLM interface (e.g., Claude, ChatGPT, or Gemini). The prompt is self-contained; it includes the dataset description, layout specification, color scheme, and interactivity requirements.</p>
+<p>The expected output is a <strong>fully functional, single-file interactive dashboard</strong> delivered as an HTML webpage or a React component that runs in the browser. All charts, filters, and interactions should work without any external dependencies beyond standard charting libraries.</p>
+<p>After receiving the output, test it in your browser and note any elements that differ from the wireframe or the design specifications. Bring your results to class for discussion.</p>
+<section id="prompt-1-minimal-instructions">
+<h3>Prompt 1: Minimal Instructions<a class="headerlink" href="#prompt-1-minimal-instructions" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">Build</span> <span class="n">a</span> <span class="n">fully</span> <span class="n">interactive</span> <span class="n">dashboard</span> <span class="k">for</span> <span class="n">the</span> <span class="o">**</span><span class="n">Superstore</span> <span class="n">Sales</span> <span class="n">dataset</span><span class="o">**</span><span class="p">,</span> <span class="n">a</span> <span class="n">U</span><span class="o">.</span><span class="n">S</span><span class="o">.</span> <span class="n">retail</span> <span class="n">transactions</span> <span class="n">dataset</span> <span class="n">covering</span> <span class="n">orders</span> <span class="n">placed</span> <span class="n">between</span> <span class="mi">2015</span> <span class="ow">and</span> <span class="mf">2018.</span>
+<span class="o">&gt;</span> <span class="n">You</span> <span class="n">are</span> <span class="n">free</span> <span class="n">to</span> <span class="n">decide</span> <span class="n">what</span> <span class="n">KPIs</span><span class="p">,</span> <span class="n">charts</span><span class="p">,</span> <span class="n">filters</span><span class="p">,</span> <span class="n">layout</span><span class="p">,</span> <span class="n">color</span> <span class="n">scheme</span><span class="p">,</span> <span class="ow">and</span> <span class="n">visual</span> <span class="n">style</span> <span class="n">best</span> <span class="n">communicate</span> <span class="n">the</span> <span class="n">key</span> <span class="n">insights</span> <span class="kn">from</span><span class="w"> </span><span class="nn">this</span> <span class="n">dataset</span><span class="o">.</span> <span class="n">Deliver</span> <span class="n">the</span> <span class="n">result</span> <span class="k">as</span> <span class="n">a</span> <span class="n">single</span> <span class="bp">self</span><span class="o">-</span><span class="n">contained</span> <span class="n">HTML</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">an</span> <span class="n">interactive</span> <span class="n">artifact</span> <span class="n">that</span> <span class="n">runs</span> <span class="ow">in</span> <span class="nb">any</span> <span class="n">modern</span> <span class="n">browser</span> <span class="n">without</span> <span class="n">installation</span> <span class="ow">or</span> <span class="n">external</span> <span class="n">data</span> <span class="n">files</span><span class="o">.</span>
+</pre></div>
+</div>
+</section>
+<section id="prompt-2-pre-defining-the-dashboard-components">
+<h3>Prompt 2: Pre-defining the Dashboard Components<a class="headerlink" href="#prompt-2-pre-defining-the-dashboard-components" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Build a fully interactive dashboard called **&quot;Superstore Sales Dashboard&quot;** using the Superstore Sales dataset — a U.S. retail transactions dataset covering orders placed between 2015 and 2018. The dashboard must include the following five elements, all of which update simultaneously when the user changes any filter:
+&gt;
+&gt; 1. **KPI Card** — total Sales value across the currently filtered data
+&gt; 2. **Line Chart** — total Sales value aggregated by month
+&gt; 3. **Line Chart** — number (count) of orders aggregated by month
+&gt; 4. **Bar Chart** — total Sales broken down by Category and Sub-Category
+&gt; 5. **Map** — number of orders per U.S. state, shown as proportional bubbles
+&gt;
+&gt; The dashboard must also include three interactive filters that control all five elements simultaneously:
+&gt;
+&gt; - **Year** filter (2015, 2016, 2017, 2018)
+&gt; - **Ship Mode** filter (First Class, Same Day, Second Class, Standard Class)
+&gt; - **Segment** filter (Consumer, Corporate, Home Office)
+&gt;
+&gt; You are free to choose the layout, color scheme, chart library, and visual style. Deliver the result as a single self-contained HTML file that runs in any modern browser without installation or external data files.
+</pre></div>
+</div>
+</section>
+<section id="prompt-3-full-specification">
+<h3>Prompt 3: Full Specification<a class="headerlink" href="#prompt-3-full-specification" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Build a fully interactive, single-file HTML dashboard called **&quot;Superstore Sales Dashboard&quot;** that replicates the layout and functionality described below. The dashboard is based on the Superstore Sales dataset, a retail transactions dataset covering orders placed in the United States between 2015 and 2018. Since no data file is being provided, generate realistic synthetic data that faithfully reflects the known characteristics of this dataset as described in the data section below.
+&gt;
+&gt; ### 1. Dashboard Layout
+&gt;
+&gt; Implement the following grid layout precisely. The dashboard has a **full-width header banner** at the top, followed by a **three-column body** divided into two rows.
+&gt;
+&gt; ┌─────────────────────────────────────────────────────────────────┐
+&gt; │                  SUPERSTORE SALES DASHBOARD                     │  ← Full-width header banner (dark green background, white title text)
+&gt; ├──────────────┬──────────────────────────┬───────────────────────┤
+&gt; │  KPI Card    │  Total Value of Sales    │  Number (Volume) of   │
+&gt; │  (Total      │  by Month                │  Sales by Month       │
+&gt; │  Sales $)    │  (Line Chart)            │  (Line Chart)         │
+&gt; │              │                          │                       │
+&gt; │  Year        │                          │                       │
+&gt; │  (Slicer)    │                          │                       │
+&gt; │              │                          │                       │
+&gt; │  Ship Mode   ├──────────────────────────┼───────────────────────┤
+&gt; │  (Slicer)    │  Sales by Category and   │  Number of Orders     │
+&gt; │              │  Sub-Category            │  by State             │
+&gt; │  Segment     │  (Grouped Bar Chart)     │  (Bubble Map of       │
+&gt; │  (Slicer)    │                          │  the United States)   │
+&gt; └──────────────┴──────────────────────────┴───────────────────────┘
+&gt;
+&gt; Column proportions: left panel = 15% width; center panel = 45% width; right panel = 40% width.  
+&gt; Row proportions: top row = 45% height; bottom row = 55% height.  
+&gt; The left panel spans both rows as a single vertical sidebar.
+&gt;
+&gt; ### 2. Individual Panel Specifications
+&gt;
+&gt; **Header Banner**
+&gt; - Full-width bar across the top of the dashboard.
+&gt; - Background: dark green (#2E7D32).
+&gt; - Text: &quot;Superstore Sales Dashboard&quot; centered, white, large serif or clean sans-serif font.
+&gt;
+&gt; **Left Sidebar — KPI Card and Slicers**
+&gt; - Background: light gray (#F5F5F5).
+&gt; - **KPI Card** (top of sidebar): Display the total Sales value across all currently filtered data. Format as currency (e.g., $2.30M). Label it &quot;Total Sales ($)&quot;. Use large bold green text for the value.
+&gt; - **Year Slicer**: A labeled checkbox group listing 2015, 2016, 2017, 2018. All years selected by default.
+&gt; - **Ship Mode Slicer**: A labeled checkbox group listing First Class, Same Day, Second Class, Standard Class. All selected by default.
+&gt; - **Segment Slicer**: A labeled checkbox group listing Consumer, Corporate, Home Office. All selected by default.
+&gt; - Each slicer group should have a bold label header (e.g., &quot;Year&quot;, &quot;Ship Mode&quot;, &quot;Segment&quot;) with a visible separator line between groups.
+&gt;
+&gt; **Top-Center — Total Value of Sales by Month (Line Chart)**
+&gt; - X-axis: Month name (January through December).
+&gt; - Y-axis: Sum of Sales across all orders in that month, aggregated across all selected years. Label as &quot;Sum of Sales ($)&quot;.
+&gt; - One line in dark green (#388E3C).
+&gt; - Include tooltips showing exact month and value on hover.
+&gt; - Title: &quot;Total Value of Sales by Month ($)&quot;.
+&gt;
+&gt; **Top-Right — Number (Volume) of Sales by Month (Line Chart)**
+&gt; - X-axis: Month name (January through December).
+&gt; - Y-axis: Count of order line items in that month, aggregated across all selected years. Label as &quot;Count of Sales&quot;.
+&gt; - One line in dark green (#388E3C).
+&gt; - Include tooltips showing exact month and count on hover.
+&gt; - Title: &quot;Number (Volume) of Sales by Month&quot;.
+&gt;
+&gt; **Bottom-Center — Sales by Category and Sub-Category (Grouped Bar Chart)**
+&gt; - X-axis: Sub-Category names, grouped and visually separated by their parent Category (Furniture | Office Supplies | Technology). Show Category labels below the sub-category labels on the X-axis.
+&gt; - Y-axis: Sum of Sales. Label as &quot;Sum of Sales ($)&quot;.
+&gt; - Bars in dark green (#388E3C); use lighter green (#A5D6A7) for hover highlight.
+&gt; - Include tooltips showing sub-category name and exact sales value on hover.
+&gt; - Title: &quot;Sales by Category and Sub-Category ($)&quot;.
+&gt;
+&gt; **Bottom-Right — Number of Orders by State (Bubble Map)**
+&gt; - Display an SVG or canvas-based outline map of the contiguous United States.
+&gt; - For each state, place a circle centered on the state&#39;s approximate geographic centroid.
+&gt; - Circle size: proportional to the number of orders in that state under the current filter.
+&gt; - Circle color: medium green (#66BB6A), with opacity 0.7.
+&gt; - Include tooltips showing state name and order count on hover.
+&gt; - Title: &quot;Number of Orders by State&quot;.
+&gt;
+&gt; ### 3. Color Scheme
+&gt;
+&gt; | Element | Color |
+&gt; |---|---|
+&gt; | Header background | #2E7D32 (dark green) |
+&gt; | Primary chart color | #388E3C (medium-dark green) |
+&gt; | Chart hover highlight | #A5D6A7 (light green) |
+&gt; | Map bubble fill | #66BB6A (medium green), opacity 0.7 |
+&gt; | Sidebar background | #F5F5F5 (light gray) |
+&gt; | Main background | #FFFFFF (white) |
+&gt; | KPI value text | #1B5E20 (deep green) |
+&gt; | Body text and labels | #212121 (near-black) |
+&gt; | Panel borders | #E0E0E0 (light gray) |
+&gt;
+&gt; ### 4. Interactivity Requirements
+&gt;
+&gt; All five panels (KPI card, both line charts, bar chart, and map) must update simultaneously whenever the user changes any slicer selection. Specifically:
+&gt;
+&gt; - Checking or unchecking any Year value re-aggregates all data to include only the selected years.
+&gt; - Checking or unchecking any Ship Mode value re-aggregates all data to include only the selected ship modes.
+&gt; - Checking or unchecking any Segment value re-aggregates all data to include only the selected segments.
+&gt; - The KPI card always reflects the total Sales of the currently filtered dataset.
+&gt; - All charts re-render with updated values after each filter change.
+&gt; - Every chart must include hover tooltips showing the exact aggregated value for the hovered element.
+&gt;
+&gt; ### 5. Technical Requirements
+&gt;
+&gt; - Deliver the dashboard as a **single self-contained HTML file**.
+&gt; - Use **Chart.js** (loaded from CDN) for the line charts and bar chart.
+&gt; - Use **plain SVG with JavaScript** for the U.S. bubble map (include approximate state centroid coordinates for all 48 contiguous states and D.C. hardcoded as a JavaScript array).
+&gt; - Generate all synthetic data as a JavaScript array of objects hardcoded inside a `&lt;script&gt;` tag. Do not require any external data file or API call.
+&gt; - Use only vanilla JavaScript for interactivity — no React, Vue, or other frameworks.
+&gt; - The dashboard must render correctly in a modern browser (Chrome or Firefox) without any build step or local server.
+&gt; - The page should have no scrollbar — the entire dashboard must fit within a single viewport at 1280×900 resolution.
+</pre></div>
+</div>
+<blockquote>
+<div><p><strong>Note:</strong> LLMs may produce slightly different map implementations or chart libraries depending on the interface used. If the first output does not render correctly, use the following follow-up prompt:</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="n">dashboard</span> <span class="n">did</span> <span class="ow">not</span> <span class="n">render</span> <span class="n">correctly</span><span class="o">.</span> <span class="n">Specifically</span><span class="p">,</span> <span class="p">[</span><span class="n">describe</span> <span class="n">the</span> <span class="n">issue</span><span class="p">]</span><span class="o">.</span> <span class="n">Please</span> <span class="n">fix</span> <span class="n">only</span> <span class="n">that</span> <span class="n">section</span> <span class="ow">and</span> <span class="k">return</span> <span class="n">the</span> <span class="n">corrected</span> <span class="n">complete</span> <span class="n">HTML</span> <span class="n">file</span><span class="o">.</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="reflection">
+<h2>Reflection<a class="headerlink" href="#reflection" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Who is the intended audience for your data story, and how does this influence visualization and narrative choices?</p></li>
+<li><p>How do you balance simplicity and completeness when communicating insights?</p></li>
+<li><p>In what ways can interactivity strengthen—or weaken—a data story?</p></li>
+<li><p>How does dashboard design differ when the goal is monitoring versus exploration?</p></li>
+<li><p>What ethical or security considerations arise when sharing analytical dashboards?</p></li>
+</ul>
+</section>
+<section id="further-reading">
+<h2>Further Reading<a class="headerlink" href="#further-reading" title="Link to this heading">#</a></h2>
+<p>Students are encouraged to consult the bibliography listed in the course syllabus, particularly:</p>
+<ul class="simple">
+<li><p><strong>de Castro, L. N. (2026).</strong> <em>Exploratory Data Analysis: Descriptive Analysis, Visualization, and Dashboard Design</em>. CRC Press.</p></li>
+<li><p><strong>Knaflic, C. N. (2015).</strong> <em>Storytelling with Data: A Data Visualization Guide for Business Professionals</em>. Wiley.</p></li>
+<li><p><strong>Ward, M., Grinstein, G. G., &amp; Keim, D. (2015).</strong> <em>Interactive Data Visualization</em>. CRC Press.</p></li>
+<li><p><strong>Wilke, C. O. (2019).</strong> <em>Fundamentals of Data Visualization</em>. O’Reilly Media.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Module6_Special_Types_of_Data.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">6 — Special Types of Data</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="AppendixA_Datasets.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Datasets Summary</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-storytelling">7.1 Data Storytelling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-the-audience-and-purpose">7.1.1 Define the Audience and Purpose</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identify-the-key-message-and-depth">7.1.2 Identify the Key Message and Depth</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-the-exploratory-data-analysis">7.1.3 Perform the Exploratory Data Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-a-compelling-narrative">7.1.4 Prepare a Compelling Narrative</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prompt-exercise-building-a-data-story-with-an-llm">7.2 Prompt Exercise: Building a Data Story with an LLM</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#background-the-superstore-dataset">Background: The Superstore Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-step-by-step-prompt-sequence">Part 1 — Step-by-Step Prompt Sequence</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-audience-and-purpose">Step 1 · Audience and Purpose</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-key-message-and-depth">Step 2 · Key Message and Depth</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-exploratory-analysis-plan">Step 3 · Exploratory Analysis Plan</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-compelling-narrative">Step 4 · Compelling Narrative</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-critical-reflection">Part 2 — Critical Reflection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#submission-requirements">Submission Requirements</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dashboard-design">7.3 Dashboard Design</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-appropriate-visualizations">7.3.1 Selecting Appropriate Visualizations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#designing-the-dashboard-layout">7.3.2 Designing the Dashboard Layout</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-a-color-scheme">7.3.3 Choosing a Color Scheme</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-interactivity">7.3.4 Applying Interactivity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#security-and-access-control">7.3.5 Security and Access Control</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-and-iterate">7.3.6 Test and Iterate</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prompt-exercise-designing-a-dashboard-with-an-llm">7.4 Prompt Exercise: Designing a Dashboard with an LLM</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Background: The Superstore Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Part 1 — Step-by-Step Prompt Sequence</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-select-appropriate-visualizations">Step 1 · Select Appropriate Visualizations</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-design-the-dashboard-layout">Step 2 · Design the Dashboard Layout</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-choose-a-color-scheme">Step 3 · Choose a Color Scheme</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-apply-interactivity">Step 4 · Apply Interactivity</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-security-and-access-control">Step 5 · Security and Access Control</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-test-and-iterate">Step 6 · Test and Iterate</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Part 2 — Critical Reflection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Submission Requirements</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-superstore-sales-dataset">7.5 Case Study: Superstore Sales Dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">7.5.1 Data Storytelling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">7.5.2 Dashboard Design</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting-the-superstore-sales-interactive-dashboard">7.6 Prompting the Superstore Sales Interactive Dashboard</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prompt-1-minimal-instructions">Prompt 1: Minimal Instructions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prompt-2-pre-defining-the-dashboard-components">Prompt 2: Pre-defining the Dashboard Components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prompt-3-full-specification">Prompt 3: Full Specification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">Reflection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">Further Reading</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Leandro Nunes de Castro, Ph.D.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
